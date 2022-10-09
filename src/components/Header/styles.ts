@@ -57,6 +57,9 @@ export const HeaderContainer = styled.header`
     justify-content: center;
     align-items: center;
 
+    width: 2.375rem;
+    height: 2.375rem;
+
     padding: 0.5rem;
 
     border: none;
