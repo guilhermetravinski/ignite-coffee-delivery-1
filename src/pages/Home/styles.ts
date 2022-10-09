@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   max-width: 71rem;
-  padding: 12.25rem 1rem 0;
-
   margin: 0 auto;
 `
 
 export const IntroContainer = styled.div`
   display: flex;
   gap: 3.5rem;
+
+  padding: 12.25rem 1rem 6.75rem;
 
   img {
     width: 29.75rem;
@@ -75,5 +75,3 @@ export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
     background: ${(props) => props.theme[IconBgByIconType[props.iconType]]};
   }
 `
-
-export const CoffeeListContainer = styled.div``
