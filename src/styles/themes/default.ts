@@ -7,7 +7,6 @@ export const defaultTheme = {
   '--brand-purple': '#8047F8',
   '--brand-purple-light': '#EBE5F9',
 
-
   '--base-title': '#272221',
   '--base-subtitle': '#403937',
   '--base-text': '#574F4D',
@@ -19,5 +18,5 @@ export const defaultTheme = {
   '--base-card': '#F3F2F2',
 
   '--base-background': '#FAFAFA',
-  '--white': '#FFFFFF'
+  '--white': '#FFFFFF',
 }
