@@ -1,16 +1,27 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+export const Container = styled.div`
   width: 100%;
+
+  background: ${(props) => props.theme['--base-background']};
+
+  position: fixed;
+
   padding: 2rem 0;
+`
+
+export const HeaderContainer = styled.header`
+  max-width: 69rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  a > img {
+  a {
     width: 84.95px;
-    height: 40px;
+    height: 2.5rem;
   }
 
   div {
