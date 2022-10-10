@@ -1,7 +1,14 @@
+/* eslint-disable prettier/prettier */
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const GoToCheckoutButtonContainer = styled(NavLink)`
+type GoToCheckoutButtonContainerProps = {
+  isHeader?: boolean
+}
+
+export const GoToCheckoutButtonContainer = styled(
+  NavLink,
+) <GoToCheckoutButtonContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,8 +21,8 @@ export const GoToCheckoutButtonContainer = styled(NavLink)`
   border: none;
   border-radius: 6px;
 
-  background: ${(props) => props.theme['--brand-yellow-light']};
-  color: ${(props) => props.theme['--brand-yellow-dark']};
+  background: ${(props) => props.theme[props.isHeader ? '--brand-yellow-light' : '--brand-purple-dark']};
+  color: ${(props) => props.theme[props.isHeader ? '--brand-yellow-dark' : '--base-card']};
 
-  cursor: pointer;
+cursor: pointer;
 `

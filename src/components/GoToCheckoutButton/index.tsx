@@ -1,9 +1,15 @@
 import { ShoppingCart } from 'phosphor-react'
 import { GoToCheckoutButtonContainer } from './styles'
 
-export function GoToCheckoutButton() {
+type GoToCheckoutButtonProps = {
+  isHeader: boolean
+}
+
+export function GoToCheckoutButton({
+  isHeader = false,
+}: GoToCheckoutButtonProps) {
   return (
-    <GoToCheckoutButtonContainer to="/checkout">
+    <GoToCheckoutButtonContainer to="/checkout" isHeader={isHeader}>
       <ShoppingCart size={22} weight="fill" />
     </GoToCheckoutButtonContainer>
   )

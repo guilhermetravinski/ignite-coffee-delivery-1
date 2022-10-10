@@ -17,7 +17,7 @@ export function Header() {
             <span>Porto Alegre, RS</span>
           </div>
 
-          <GoToCheckoutButton />
+          <GoToCheckoutButton isHeader={true} />
         </div>
       </HeaderContainer>
     </Container>
