@@ -1,21 +1,14 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from 'phosphor-react'
+import { MapPinLine } from 'phosphor-react'
 import { useState } from 'react'
 import { CardHeader } from './components/CardHeader'
+import { PaymentMethods } from './components/PaymentMethods'
 import {
-  PaymentMethodsContainer,
   CartContainer,
   CheckoutContainer,
   DefaultInput,
   FormContainer,
   FullsizeInput,
   InputsContainer,
-  PaymentOptionButton,
   SmallInput,
   Subtitle,
 } from './styles'
@@ -59,46 +52,11 @@ export function Cart() {
           </InputsContainer>
         </form>
 
-        <PaymentMethodsContainer>
-          <CardHeader
-            icon={<CurrencyDollar size={22} />}
-            title="Pagamento"
-            description="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
-            isDefaultColor={false}
-          />
-
-          <ul>
-            <li>
-              <PaymentOptionButton
-                onClick={() => handleSelectPaymentMethod('credit-card')}
-                isActive={paymentMethod === 'credit-card'}
-              >
-                <CreditCard />
-                Cartão de Crédito
-              </PaymentOptionButton>
-            </li>
-            <li>
-              <PaymentOptionButton
-                onClick={() => handleSelectPaymentMethod('debit-card')}
-                isActive={paymentMethod === 'debit-card'}
-              >
-                <Bank />
-                Cartão de Débito
-              </PaymentOptionButton>
-            </li>
-            <li>
-              <PaymentOptionButton
-                onClick={() => handleSelectPaymentMethod('money')}
-                isActive={paymentMethod === 'money'}
-              >
-                <Money />
-                Dinheiro
-              </PaymentOptionButton>
-            </li>
-          </ul>
-        </PaymentMethodsContainer>
+        <PaymentMethods
+          paymentMethod={paymentMethod}
+          onSelectPaymentMethod={handleSelectPaymentMethod}
+        />
       </FormContainer>
-
       <CheckoutContainer></CheckoutContainer>
     </CartContainer>
   )
