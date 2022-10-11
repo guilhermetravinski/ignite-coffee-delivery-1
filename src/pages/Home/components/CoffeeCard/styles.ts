@@ -9,7 +9,7 @@ export const CoffeeCardContainer = styled.li`
   background: ${(props) => props.theme['--base-card']};
   border-radius: 6px 36px;
 
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 1.25rem 0;
 
   > img {
     display: block;
