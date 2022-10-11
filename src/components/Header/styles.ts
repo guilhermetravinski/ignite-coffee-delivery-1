@@ -19,28 +19,47 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  a {
+  > a {
     width: 84.95px;
     height: 2.5rem;
   }
 
-  div {
+  > div {
     display: flex;
     gap: 0.75rem;
+
+    > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 2.375rem;
+      height: 2.375rem;
+
+      padding: 0.5rem;
+
+      border: none;
+      border-radius: 6px;
+
+      background: ${(props) => props.theme['--brand-yellow-light']};
+      color: ${(props) => props.theme['--brand-yellow-dark']};
+
+      cursor: pointer;
+    }
   }
+`
 
-  div > div {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+export const LocationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 
-    padding: 0.5rem;
-    border-radius: 6px;
+  padding: 0.5rem;
+  border-radius: 6px;
 
-    background: ${(props) => props.theme['--brand-purple-light']};
-  }
+  background: ${(props) => props.theme['--brand-purple-light']};
 
-  div > div > span {
+  > span {
     color: ${(props) => props.theme['--brand-purple-dark']};
 
     font-size: 0.875rem;
@@ -48,26 +67,7 @@ export const HeaderContainer = styled.header`
     line-height: 1.125rem;
   }
 
-  div > div > svg {
+  > svg {
     color: ${(props) => props.theme['--brand-purple']};
-  }
-
-  div > a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 2.375rem;
-    height: 2.375rem;
-
-    padding: 0.5rem;
-
-    border: none;
-    border-radius: 6px;
-
-    background: ${(props) => props.theme['--brand-yellow-light']};
-    color: ${(props) => props.theme['--brand-yellow-dark']};
-
-    cursor: pointer;
   }
 `
