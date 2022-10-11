@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
+import { convertPriceToText } from '../../../../helpers/formatPrice'
 import { Coffee } from '../CoffeeList'
 import { CardFooter, CoffeeCardContainer, ItemCounterButton } from './styles'
 
@@ -37,7 +38,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
       <p>{coffee.description}</p>
 
       <CardFooter>
-        <strong>{coffee.price}</strong>
+        <strong>{convertPriceToText(coffee.price)}</strong>
 
         <div>
           <ItemCounterButton>
