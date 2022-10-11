@@ -1,6 +1,8 @@
+import { v4 as uuid } from 'uuid'
+
 export default [
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     price: 5.0,
@@ -8,7 +10,7 @@ export default [
     imageUrl: 'expresso.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     price: 9.9,
@@ -16,7 +18,7 @@ export default [
     imageUrl: 'americano.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     price: 7.25,
@@ -24,7 +26,7 @@ export default [
     imageUrl: 'expresso-cremoso.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     price: 12,
@@ -32,7 +34,7 @@ export default [
     imageUrl: 'cafe-gelado.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     price: 6,
@@ -40,7 +42,7 @@ export default [
     imageUrl: 'cafe-com-leite.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Latte',
     description:
       'Uma dose de café expresso com o dobro de leite e espuma cremosa',
@@ -49,7 +51,7 @@ export default [
     imageUrl: 'latte.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Capuccino',
     description:
       'Bebida com canela feita de doses iguais de café, leite e espuma',
@@ -58,7 +60,7 @@ export default [
     imageUrl: 'capuccino.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Macchiato',
     description:
       'Café expresso misturado com um pouco de leite quente e espuma',
@@ -67,7 +69,7 @@ export default [
     imageUrl: 'macchiato.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     price: 10,
@@ -75,7 +77,7 @@ export default [
     imageUrl: 'mocaccino.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     price: 8.99,
@@ -83,7 +85,7 @@ export default [
     imageUrl: 'chocolate-quente.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Cubano',
     description:
       'Drink gelado de café expresso com rum, creme de leite e hortelã',
@@ -92,7 +94,7 @@ export default [
     imageUrl: 'cubano.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Haviano',
     description: 'Bebida adocicada preparada com café e leite de cocoã',
     price: 12.99,
@@ -100,7 +102,7 @@ export default [
     imageUrl: 'havaiano.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     price: 14.99,
@@ -108,7 +110,7 @@ export default [
     imageUrl: 'arabe.svg',
   },
   {
-    id: new Date().getTime(),
+    id: uuid(),
     title: 'Irlândes',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     price: 11.99,
