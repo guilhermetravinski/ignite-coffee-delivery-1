@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const CoffeeListContainer = styled.div`
+  margin-top: 6.75rem;
+
   > h2 {
     font-family: 'Baloo 2', cursive;
     font-weight: 800;

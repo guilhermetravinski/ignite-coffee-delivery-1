@@ -1,19 +1,16 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const HeaderContainer = styled.header`
   width: 100%;
+  max-width: 72rem;
 
   background: ${(props) => props.theme['--base-background']};
 
   position: fixed;
+  z-index: 2;
 
   padding: 2rem 0;
-`
-
-export const HeaderContainer = styled.header`
-  max-width: 72rem;
-  padding: 0 2rem;
   margin: 0 auto;
 
   display: flex;
@@ -28,6 +25,12 @@ export const HeaderContainer = styled.header`
   > div {
     display: flex;
     gap: 0.75rem;
+  }
+
+  @media (max-width: 720px) {
+    & {
+      max-width: 62rem;
+    }
   }
 `
 
