@@ -4,7 +4,7 @@ import coffeesList from '../../../../data/coffees'
 import { CoffeeCard } from '../CoffeeCard'
 
 export type Coffee = {
-  id: number
+  id: string
   title: string
   description: string
   tags: string[]
@@ -24,7 +24,7 @@ export function CoffeeList() {
       <h2>Nossos cafés</h2>
       <ul>
         {coffees.map((coffee) => (
-          <CoffeeCard key={coffee.id} coffee={coffee} />
+          <CoffeeCard key={coffee.id + coffee.title} coffee={coffee} />
         ))}
       </ul>
     </CoffeeListContainer>

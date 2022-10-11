@@ -1,8 +1,8 @@
 import { ActionTypes } from './actions'
 
 export type CartItem = {
-  id: number
-  name: string
+  id: string
+  title: string
   quantity: number
   price: number
   totalPrice: number
@@ -20,19 +20,34 @@ export function cartReducer(state: Cart, action: any) {
         (cartItem) => cartItem.id === action.payload.cartItem.id,
       )
 
+      const cartItems = [...state.cartItems]
+
       if (cartItemIndex < 0) {
-        return state
+        const newCartItem: CartItem = { ...action.payload.cartItem }
+        newCartItem.totalPrice = newCartItem.quantity * newCartItem.price
+        cartItems.push(newCartItem)
+      } else {
+        const currentCartItem = cartItems[cartItemIndex]
+
+        const newQuantity =
+          currentCartItem.quantity + action.payload.cartItem.quantity
+        const newTotalPrice = currentCartItem.price * newQuantity
+
+        cartItems[cartItemIndex] = {
+          ...currentCartItem,
+          quantity: newQuantity,
+          totalPrice: newTotalPrice,
+        }
       }
 
-      const newCartItems = [...state.cartItems]
-
-      newCartItems[cartItemIndex].quantity += action.payload.cartItem.quantity
-      newCartItems[cartItemIndex].totalPrice =
-        newCartItems[cartItemIndex].price * newCartItems[cartItemIndex].quantity
+      const totalPrice = cartItems.reduce((accumulator, currentCartItem) => {
+        return accumulator + currentCartItem.totalPrice
+      }, 0)
 
       return {
         ...state,
-        cartItems: [...newCartItems],
+        cartItems: [...cartItems],
+        totalPrice,
       }
     }
     default:
