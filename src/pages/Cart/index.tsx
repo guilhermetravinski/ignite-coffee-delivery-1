@@ -1,22 +1,42 @@
-import { MapPinLine } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
+import { useState } from 'react'
 import { CardHeader } from './CardHeader'
 import {
-  BottomCard,
+  PaymentMethodsContainer,
   CartContainer,
   CheckoutContainer,
   DefaultInput,
   FormContainer,
   FullsizeInput,
   InputsContainer,
+  PaymentOptionButton,
   SmallInput,
   Subtitle,
 } from './styles'
 
 export function Cart() {
+  const [paymentMethod, setPaymentMethod] = useState('')
+
+  function handleSelectPaymentMethod(chosenPaymentMethod: string) {
+    if (paymentMethod === chosenPaymentMethod) {
+      setPaymentMethod('')
+      return
+    }
+
+    setPaymentMethod(chosenPaymentMethod)
+  }
+
   return (
     <CartContainer>
       <FormContainer>
         <Subtitle>Complete seu pedido</Subtitle>
+
         <form>
           <CardHeader
             icon={<MapPinLine size={22} />}
@@ -29,11 +49,7 @@ export function Cart() {
             <FullsizeInput type="text" placeholder="Rua" />
             <div>
               <DefaultInput type="text" placeholder="Número" />
-              <FullsizeInput
-                type="text"
-                placeholder="Complemento"
-                isOptional={true}
-              />
+              <FullsizeInput type="text" placeholder="Complemento" />
             </div>
             <div>
               <DefaultInput type="text" placeholder="Bairro" />
@@ -42,29 +58,47 @@ export function Cart() {
             </div>
           </InputsContainer>
         </form>
-        <BottomCard>
-          <div>
-            <span>$ Icon</span>
-            <div>
-              <strong>Pagamento</strong>
-              <p>
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </p>
-            </div>
-          </div>
+
+        <PaymentMethodsContainer>
+          <CardHeader
+            icon={<CurrencyDollar size={22} />}
+            title="Pagamento"
+            description="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+            isDefaultColor={false}
+          />
+
           <ul>
             <li>
-              <button>Cartão de Crédito</button>
+              <PaymentOptionButton
+                onClick={() => handleSelectPaymentMethod('credit-card')}
+                isActive={paymentMethod === 'credit-card'}
+              >
+                <CreditCard />
+                Cartão de Crédito
+              </PaymentOptionButton>
             </li>
             <li>
-              <button>Cartão de Débito</button>
+              <PaymentOptionButton
+                onClick={() => handleSelectPaymentMethod('debit-card')}
+                isActive={paymentMethod === 'debit-card'}
+              >
+                <Bank />
+                Cartão de Débito
+              </PaymentOptionButton>
             </li>
             <li>
-              <button>Dinheiro</button>
+              <PaymentOptionButton
+                onClick={() => handleSelectPaymentMethod('money')}
+                isActive={paymentMethod === 'money'}
+              >
+                <Money />
+                Dinheiro
+              </PaymentOptionButton>
             </li>
           </ul>
-        </BottomCard>
+        </PaymentMethodsContainer>
       </FormContainer>
+
       <CheckoutContainer></CheckoutContainer>
     </CartContainer>
   )

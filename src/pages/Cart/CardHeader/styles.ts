@@ -1,11 +1,19 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
-export const CardHeaderContainer = styled.div`
+type CardHeaderContainerProps = {
+  isDefaultColor: boolean
+}
+
+export const CardHeaderContainer = styled.div<CardHeaderContainerProps>`
   display: flex;
   gap: 0.5rem;
 
   > svg {
-    color: ${(props) => props.theme['--brand-yellow-dark']};
+    color: ${(props) =>
+    props.isDefaultColor
+      ? props.theme['--brand-yellow-dark']
+      : props.theme['--brand-purple']};
   }
 
   > div {

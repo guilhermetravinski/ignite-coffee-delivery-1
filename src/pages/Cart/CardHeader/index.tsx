@@ -5,11 +5,17 @@ type CardHeaderProps = {
   icon: ReactNode
   title: string
   description: string
+  isDefaultColor?: boolean
 }
 
-export function CardHeader({ icon, title, description }: CardHeaderProps) {
+export function CardHeader({
+  icon,
+  title,
+  description,
+  isDefaultColor = true,
+}: CardHeaderProps) {
   return (
-    <CardHeaderContainer>
+    <CardHeaderContainer isDefaultColor={isDefaultColor}>
       {icon}
       <div>
         <strong>{title}</strong>
