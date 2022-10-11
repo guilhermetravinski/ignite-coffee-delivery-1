@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -27,25 +28,6 @@ export const HeaderContainer = styled.header`
   > div {
     display: flex;
     gap: 0.75rem;
-
-    > a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      width: 2.375rem;
-      height: 2.375rem;
-
-      padding: 0.5rem;
-
-      border: none;
-      border-radius: 6px;
-
-      background: ${(props) => props.theme['--brand-yellow-light']};
-      color: ${(props) => props.theme['--brand-yellow-dark']};
-
-      cursor: pointer;
-    }
   }
 `
 
@@ -69,5 +51,48 @@ export const LocationContainer = styled.div`
 
   > svg {
     color: ${(props) => props.theme['--brand-purple']};
+  }
+`
+
+export const GoToCheckoutButton = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  width: 2.375rem;
+  height: 2.375rem;
+
+  padding: 0.5rem;
+
+  border: none;
+  border-radius: 6px;
+
+  background: ${(props) => props.theme['--brand-yellow-light']};
+  color: ${(props) => props.theme['--brand-yellow-dark']};
+
+  cursor: pointer;
+
+  > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+
+    background: ${(props) => props.theme['--brand-yellow-dark']};
+    color: ${(props) => props.theme['--white']};
+
+    top: -0.625rem;
+    right: -0.625rem;
+
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 `
