@@ -5,8 +5,7 @@ import {
   CoffeeListContainer,
   ItemCounterButton,
 } from './styles'
-import { Minus, Plus } from 'phosphor-react'
-import { GoToCheckoutButton } from '../../../../components/GoToCheckoutButton'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import coffeesList from '../../../../data/coffees'
 
 type Coffee = {
@@ -57,7 +56,9 @@ export function CoffeeList() {
                   </button>
                 </ItemCounterButton>
 
-                <GoToCheckoutButton />
+                <button>
+                  <ShoppingCart size={22} weight="fill" />
+                </button>
               </div>
             </CardFooter>
           </CoffeeCard>

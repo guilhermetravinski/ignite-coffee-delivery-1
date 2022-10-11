@@ -104,6 +104,31 @@ export const CardFooter = styled.footer`
   > div {
     display: flex;
     gap: 0.5rem;
+
+    > button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 2.375rem;
+      height: 2.375rem;
+
+      padding: 0.5rem;
+
+      border: none;
+      border-radius: 6px;
+
+      background: ${(props) => props.theme['--brand-purple-dark']};
+      color: ${(props) => props.theme['--base-card']};
+
+      cursor: pointer;
+
+      transition: background-color 0.2s;
+
+      &:hover {
+        background: ${(props) => props.theme['--brand-purple']};
+      }
+    }
   }
 `
 
