@@ -2,14 +2,16 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   max-width: 71rem;
-  margin: 0 auto;
+  margin: 0 auto 9.75rem;
+
+  padding: 0 1rem;
 `
 
 export const IntroContainer = styled.div`
   display: flex;
   gap: 3.5rem;
 
-  padding: 12.25rem 1rem 6.75rem;
+  padding: 12.25rem 0 6.75rem;
 
   img {
     width: 29.75rem;

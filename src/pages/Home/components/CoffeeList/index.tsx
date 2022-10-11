@@ -1,29 +1,68 @@
+import { useEffect, useState } from 'react'
+import {
+  CardFooter,
+  CoffeeCard,
+  CoffeeListContainer,
+  ItemCounterButton,
+} from './styles'
+import { Minus, Plus } from 'phosphor-react'
+import { GoToCheckoutButton } from '../../../../components/GoToCheckoutButton'
+import coffeesList from '../../../../data/coffees'
+
+type Coffee = {
+  id: number
+  title: string
+  description: string
+  tags: string[]
+  price: string
+  imageUrl: string
+}
+
 export function CoffeeList() {
+  const [coffees, setCoffees] = useState<Coffee[]>([])
+
+  useEffect(() => {
+    setCoffees([...coffeesList])
+  }, [])
+
   return (
-    <>
+    <CoffeeListContainer>
       <h2>Nossos cafés</h2>
       <ul>
-        <li>
-          <img src="" alt="" />
-          <span>Tradicional</span>
-          <b>Express Tradicional</b>
-          <span>O tradicional café feito com água quente e grãos moídos</span>
-          <footer>
+        {coffees.map((coffee) => (
+          <CoffeeCard key={coffee.id}>
+            <img src={'../../../../public/' + coffee.imageUrl} alt="" />
+
             <div>
-              <p>R$</p>
-              <b>9,90</b>
+              {coffee.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
             </div>
-            <div>
+
+            <strong>{coffee.title}</strong>
+
+            <p>{coffee.description}</p>
+
+            <CardFooter>
+              <strong>{coffee.price}</strong>
+
               <div>
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+                <ItemCounterButton>
+                  <button>
+                    <Minus size={14} />
+                  </button>
+                  <p>1</p>
+                  <button>
+                    <Plus size={14} />
+                  </button>
+                </ItemCounterButton>
+
+                <GoToCheckoutButton />
               </div>
-              <button>Cart icon</button>
-            </div>
-          </footer>
-        </li>
+            </CardFooter>
+          </CoffeeCard>
+        ))}
       </ul>
-    </>
+    </CoffeeListContainer>
   )
 }
