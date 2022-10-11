@@ -29,7 +29,7 @@ export const HeaderContainer = styled.header`
 
   @media (max-width: 720px) {
     & {
-      max-width: 62rem;
+      width: 90%;
     }
   }
 `

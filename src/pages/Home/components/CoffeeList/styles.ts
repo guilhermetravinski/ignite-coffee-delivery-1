@@ -18,4 +18,10 @@ export const CoffeeListContainer = styled.div`
     grid-column-gap: 2rem;
     grid-row-gap: 2.5rem;
   }
+
+  @media (max-width: 720px) {
+    > ul {
+      grid-template-columns: 1fr;
+    }
+  }
 `

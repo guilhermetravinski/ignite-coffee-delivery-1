@@ -17,6 +17,12 @@ export const IntroContainer = styled.div`
     width: 29.75rem;
     height: 22.5rem;
   }
+
+  @media (max-width: 720px) {
+    > img {
+      display: none;
+    }
+  }
 `
 
 export const IntroLeftContainer = styled.div`
@@ -46,6 +52,12 @@ export const IntroLeftContainer = styled.div`
     grid-template-columns: 14.5rem 1fr;
     grid-row-gap: 1.25rem;
     grid-column-gap: 2.5rem;
+
+    @media (max-width: 720px) {
+      & {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 `
 
