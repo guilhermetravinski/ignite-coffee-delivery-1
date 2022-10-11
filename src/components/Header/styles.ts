@@ -54,7 +54,7 @@ export const LocationContainer = styled.div`
   }
 `
 
-export const GoToCheckoutButton = styled(NavLink)`
+export const GoToCartButton = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -5,7 +5,7 @@ import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg'
 import { CartContext } from '../../contexts/CartContext'
 import {
   Container,
-  GoToCheckoutButton,
+  GoToCartButton,
   HeaderContainer,
   LocationContainer,
 } from './styles'
@@ -25,10 +25,10 @@ export function Header() {
             <span>Recife, PE</span>
           </LocationContainer>
 
-          <GoToCheckoutButton to="/checkout">
+          <GoToCartButton to="/cart">
             <ShoppingCart size={22} weight="fill" />
             {cartItems.length > 0 && <span>{cartItems.length}</span>}
-          </GoToCheckoutButton>
+          </GoToCartButton>
         </div>
       </HeaderContainer>
     </Container>
