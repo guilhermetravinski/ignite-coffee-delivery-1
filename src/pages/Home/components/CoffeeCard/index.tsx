@@ -24,7 +24,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   return (
     <CoffeeCardContainer key={coffee.id}>
-      <img src={'../../../../public/' + coffee.imageUrl} alt="" />
+      <img src={coffee.imageUrl} alt="" />
 
       <div>
         {coffee.tags.map((tag) => (
