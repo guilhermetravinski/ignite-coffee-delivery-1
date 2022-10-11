@@ -6,7 +6,7 @@ import {
   Money,
 } from 'phosphor-react'
 import { useState } from 'react'
-import { CardHeader } from './CardHeader'
+import { CardHeader } from './components/CardHeader'
 import {
   PaymentMethodsContainer,
   CartContainer,
