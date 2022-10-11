@@ -1,6 +1,7 @@
 import { MapPinLine } from 'phosphor-react'
+import { CardHeader } from './CardHeader'
 import {
-  CardHeader,
+  BottomCard,
   CartContainer,
   CheckoutContainer,
   DefaultInput,
@@ -17,13 +18,12 @@ export function Cart() {
       <FormContainer>
         <Subtitle>Complete seu pedido</Subtitle>
         <form>
-          <CardHeader>
-            <MapPinLine size={22} />
-            <div>
-              <strong>Endereço de Entrega</strong>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
-            </div>
-          </CardHeader>
+          <CardHeader
+            icon={<MapPinLine size={22} />}
+            title="Endereço de Entrega"
+            description="Informe o endereço onde deseja receber seu pedido"
+          />
+
           <InputsContainer>
             <DefaultInput type="text" placeholder="CEP" />
             <FullsizeInput type="text" placeholder="Rua" />
@@ -42,7 +42,7 @@ export function Cart() {
             </div>
           </InputsContainer>
         </form>
-        <footer>
+        <BottomCard>
           <div>
             <span>$ Icon</span>
             <div>
@@ -63,7 +63,7 @@ export function Cart() {
               <button>Dinheiro</button>
             </li>
           </ul>
-        </footer>
+        </BottomCard>
       </FormContainer>
       <CheckoutContainer></CheckoutContainer>
     </CartContainer>

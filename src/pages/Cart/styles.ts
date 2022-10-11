@@ -38,32 +38,6 @@ export const Subtitle = styled.h2`
   color: ${(props) => props.theme['--base-subtitle']};
 `
 
-export const CardHeader = styled.div`
-  display: flex;
-  gap: 0.5rem;
-
-  > svg {
-    color: ${(props) => props.theme['--brand-yellow-dark']};
-  }
-
-  > div {
-    > strong {
-      line-height: 1.3125rem;
-      font-weight: 400;
-
-      color: ${(props) => props.theme['--base-subtitle']};
-    }
-
-    > p {
-      font-size: 0.875rem;
-      line-height: 1.125rem;
-      font-weight: 400;
-
-      color: ${(props) => props.theme['--base-text']};
-    }
-  }
-`
-
 export const InputsContainer = styled.div`
   margin-top: 2rem;
 
@@ -105,5 +79,7 @@ export const FullsizeInput = styled(BaseInput) <FullsizeInputProps>`
 export const SmallInput = styled(BaseInput)`
   max-width: 3.75rem;
 `
+
+export const BottomCard = styled.div``
 
 export const CheckoutContainer = styled.div``
