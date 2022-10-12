@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   position: fixed;
   z-index: 2;
 
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   margin: 0 auto;
 
   display: flex;
@@ -29,7 +29,7 @@ export const HeaderContainer = styled.header`
 
   @media (max-width: 720px) {
     & {
-      width: 90%;
+      width: 100%;
     }
   }
 `

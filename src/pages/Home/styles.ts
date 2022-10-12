@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   width: 100%;
-
   margin: 0 auto 9.75rem;
+  padding: 0 1rem;
 
   position: relative;
   top: 12.375rem;
