@@ -1,5 +1,6 @@
 import { MapPinLine } from 'phosphor-react'
 import { useState } from 'react'
+import * as zod from 'zod'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
@@ -13,8 +14,26 @@ import {
   SmallInput,
 } from './styles'
 
+const deliveryAddressFormValidationSchema = zod.object({
+  zipcode: zod.string().regex(/[0-9]{5}-[0-9]{3}/, 'Digite um CEP Válido'),
+  street: zod.string().min(5, 'Digite um nome de rua válido'),
+  number: zod.number().min(1, 'Digite um número da propriedade válido'),
+  complement: zod.string().optional(),
+  neighborhood: zod.string().min(1, 'Digite um bairro válido'),
+  city: zod.string().min(1, 'Digite uma cidade válida'),
+  district: zod.string().min(2).max(2, 'O UF precisa ter 2 digitos'),
+  paymentMethod: zod.enum(['credit-card', 'debit-card', 'money']),
+})
+
 export function Cart() {
   const [paymentMethod, setPaymentMethod] = useState('')
+  const [zipcode, setZipcode] = useState('')
+  const [street, setStreet] = useState('')
+  const [number, setNumber] = useState('')
+  const [complement, setComplement] = useState('')
+  const [neighborhood, setNeighborhood] = useState('')
+  const [city, setCity] = useState('')
+  const [district, setDistrict] = useState('')
 
   function handleSelectPaymentMethod(chosenPaymentMethod: string) {
     if (paymentMethod === chosenPaymentMethod) {
@@ -23,6 +42,37 @@ export function Cart() {
     }
 
     setPaymentMethod(chosenPaymentMethod)
+  }
+
+  function resetForm() {
+    setPaymentMethod('')
+    setZipcode('')
+    setStreet('')
+    setNumber('' as any)
+    setComplement('')
+    setNeighborhood('')
+    setCity('')
+    setDistrict('')
+  }
+
+  function handleAddDeliveryAddress() {
+    try {
+      deliveryAddressFormValidationSchema.parse({
+        zipcode,
+        street,
+        number: Number(number),
+        complement,
+        neighborhood,
+        city,
+        district,
+        paymentMethod,
+      })
+    } catch (err) {
+      console.error(err)
+      return
+    }
+
+    resetForm()
   }
 
   return (
@@ -38,16 +88,51 @@ export function Cart() {
           />
 
           <InputsContainer>
-            <DefaultInput type="text" placeholder="CEP" />
-            <FullsizeInput type="text" placeholder="Rua" />
+            <DefaultInput
+              type="text"
+              value={zipcode}
+              placeholder="CEP"
+              onChange={(e) => setZipcode(e.target.value)}
+            />
+            <FullsizeInput
+              type="text"
+              value={street}
+              placeholder="Rua"
+              onChange={(e) => setStreet(e.target.value)}
+            />
             <div>
-              <DefaultInput type="text" placeholder="Número" />
-              <FullsizeInput type="text" placeholder="Complemento" />
+              <DefaultInput
+                type="text"
+                value={number}
+                placeholder="Número"
+                onChange={(e) => setNumber(e.target.value)}
+              />
+              <FullsizeInput
+                type="text"
+                value={complement}
+                onChange={(e) => setComplement(e.target.value)}
+                placeholder="Complemento"
+              />
             </div>
             <div>
-              <DefaultInput type="text" placeholder="Bairro" />
-              <FullsizeInput type="text" placeholder="Cidade" />
-              <SmallInput type="text" placeholder="UF" />
+              <DefaultInput
+                type="text"
+                value={neighborhood}
+                onChange={(e) => setNeighborhood(e.target.value)}
+                placeholder="Bairro"
+              />
+              <FullsizeInput
+                type="text"
+                value={city}
+                placeholder="Cidade"
+                onChange={(e) => setCity(e.target.value)}
+              />
+              <SmallInput
+                type="text"
+                value={district}
+                placeholder="UF"
+                onChange={(e) => setDistrict(e.target.value)}
+              />
             </div>
           </InputsContainer>
         </form>
@@ -58,7 +143,7 @@ export function Cart() {
         />
       </FormContainer>
 
-      <CartSummary />
+      <CartSummary onAddDeliveryAddress={handleAddDeliveryAddress} />
     </CartContainer>
   )
 }

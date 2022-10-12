@@ -14,7 +14,11 @@ import {
   ListItemDivider,
 } from './styles'
 
-export function CartSummary() {
+type CartSummaryProps = {
+  onAddDeliveryAddress: () => void
+}
+
+export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
   const {
     cartItems,
     totalPrice,
@@ -86,7 +90,9 @@ export function CartSummary() {
           </div>
         </PricesContainer>
 
-        <CheckoutButton>Confirmar Pedido</CheckoutButton>
+        <CheckoutButton onClick={onAddDeliveryAddress}>
+          Confirmar Pedido
+        </CheckoutButton>
       </div>
     </CheckoutContainer>
   )
