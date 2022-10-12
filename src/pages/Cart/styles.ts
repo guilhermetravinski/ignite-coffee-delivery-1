@@ -1,16 +1,15 @@
-/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 export const CartContainer = styled.main`
   width: 100%;
   margin: 0 auto 9.75rem;
+  padding: 0 1rem;
 
   position: relative;
   top: 9rem;
 
-  padding: 0 1rem;
-
   display: flex;
+  gap: 2rem;
 `
 
 export const FormContainer = styled.div`
@@ -27,15 +26,6 @@ export const FormContainer = styled.div`
     border-radius: 6px;
     padding: 2.5rem;
   }
-`
-
-export const Subtitle = styled.h2`
-  font-family: 'Baloo 2', cursive;
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.4375rem;
-
-  color: ${(props) => props.theme['--base-subtitle']};
 `
 
 export const InputsContainer = styled.div`
@@ -74,4 +64,3 @@ export const FullsizeInput = styled(BaseInput)`
 export const SmallInput = styled(BaseInput)`
   max-width: 3.75rem;
 `
-export const CheckoutContainer = styled.div``

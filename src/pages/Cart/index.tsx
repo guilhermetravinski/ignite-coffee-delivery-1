@@ -1,16 +1,16 @@
 import { MapPinLine } from 'phosphor-react'
 import { useState } from 'react'
 import { CardHeader } from './components/CardHeader'
+import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
+import { Subtitle } from './components/Subtitle'
 import {
   CartContainer,
-  CheckoutContainer,
   DefaultInput,
   FormContainer,
   FullsizeInput,
   InputsContainer,
   SmallInput,
-  Subtitle,
 } from './styles'
 
 export function Cart() {
@@ -28,7 +28,7 @@ export function Cart() {
   return (
     <CartContainer>
       <FormContainer>
-        <Subtitle>Complete seu pedido</Subtitle>
+        <Subtitle value={'Complete seu pedido'} />
 
         <form>
           <CardHeader
@@ -57,7 +57,8 @@ export function Cart() {
           onSelectPaymentMethod={handleSelectPaymentMethod}
         />
       </FormContainer>
-      <CheckoutContainer></CheckoutContainer>
+
+      <CartSummary />
     </CartContainer>
   )
 }
