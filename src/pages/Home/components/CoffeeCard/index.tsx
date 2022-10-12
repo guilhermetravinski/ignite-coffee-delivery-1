@@ -1,9 +1,10 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { useContext, useState } from 'react'
+import { ItemCounterButton } from '../../../../components/ItemCounterButton'
 import { CartContext } from '../../../../contexts/CartContext'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
 import { Coffee } from '../CoffeeList'
-import { CardFooter, CoffeeCardContainer, ItemCounterButton } from './styles'
+import { CardFooter, CoffeeCardContainer } from './styles'
 
 type CoffeeCardProps = {
   coffee: Coffee
@@ -54,18 +55,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         <strong>{convertPriceToText(coffee.price)}</strong>
 
         <div>
-          <ItemCounterButton>
-            <button
-              disabled={itemQuantity <= 1}
-              onClick={handleDecreaseItemQuantity}
-            >
-              <Minus size={14} />
-            </button>
-            <p>{itemQuantity}</p>
-            <button onClick={handleIncreaseItemQuantity}>
-              <Plus size={14} />
-            </button>
-          </ItemCounterButton>
+          <ItemCounterButton
+            itemQuantity={itemQuantity}
+            onDecreaseItemQuantity={handleDecreaseItemQuantity}
+            onIncreaseItemQuantity={handleIncreaseItemQuantity}
+          />
 
           <button onClick={handleAddItemToCart}>
             <ShoppingCart size={22} weight="fill" />
