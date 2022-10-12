@@ -1,4 +1,5 @@
 import { Trash } from 'phosphor-react'
+import { ItemCounterButton } from '../../../../components/ItemCounterButton'
 import { Subtitle } from '../Subtitle'
 import {
   CheckoutContainer,
@@ -21,7 +22,11 @@ export function CartSummary() {
             <div>
               <p>Expresso tradicional</p>
               <footer>
-                <button>- 1 +</button>
+                <ItemCounterButton
+                  itemQuantity={1}
+                  onDecreaseItemQuantity={() => {}}
+                  onIncreaseItemQuantity={() => {}}
+                />
                 <DeleteButton>
                   <Trash size={16} />
                   Remover
@@ -36,7 +41,11 @@ export function CartSummary() {
             <div>
               <p>Expresso tradicional</p>
               <footer>
-                <button>- 1 +</button>
+                <ItemCounterButton
+                  itemQuantity={1}
+                  onDecreaseItemQuantity={() => {}}
+                  onIncreaseItemQuantity={() => {}}
+                />
                 <DeleteButton>
                   <Trash size={16} />
                   Remover
