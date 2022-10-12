@@ -1,4 +1,5 @@
 import { ActionTypes } from './actions'
+import { produce } from 'immer'
 
 export type CartItem = {
   id: string
@@ -13,6 +14,12 @@ type Cart = {
   cartItems: CartItem[]
   totalPrice: number
 }
+
+// function calculateCartTotalPrice(cartItems: CartItem[]): number {
+//   return cartItems.reduce((accumulator, currentCartItem) => {
+//     return accumulator + currentCartItem.totalPrice
+//   }, 0)
+// }
 
 export function cartReducer(state: Cart, action: any) {
   switch (action.type) {
@@ -56,17 +63,15 @@ export function cartReducer(state: Cart, action: any) {
         (cartItem) => cartItem.id === action.payload.cartItemId,
       )
 
-      const cartItemListWithoutDeletedItem = [
-        ...state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.payload.cartItemId,
-        ),
-      ]
+      const newTotalPrice = state.totalPrice - item?.totalPrice!
 
-      return {
-        ...state,
-        cartItems: cartItemListWithoutDeletedItem,
-        totalPrice: state.totalPrice - item?.totalPrice!,
-      }
+      return produce(state, (draft) => {
+        draft.cartItems = draft.cartItems.filter(
+          (cartItem) => cartItem.id !== action.payload.cartItemId,
+        )
+
+        draft.totalPrice = newTotalPrice
+      })
     }
     default:
       return state
