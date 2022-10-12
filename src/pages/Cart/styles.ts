@@ -48,6 +48,12 @@ const BaseInput = styled.input`
   border: 1px solid ${(props) => props.theme['--base-button']};
   border-radius: 4px;
 
+  transition: border-color 0.2s;
+
+  :focus {
+    border: 1px solid ${(props) => props.theme['--brand-yellow-dark']};
+  }
+
   ::placeholder {
     color: ${(props) => props.theme['--base-label']};
   }
