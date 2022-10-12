@@ -33,6 +33,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
       title: coffee.title,
       price: coffee.price,
       quantity: itemQuantity,
+      imageUrl: coffee.imageUrl,
     })
     setItemQuantity(1)
   }

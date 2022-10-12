@@ -1,5 +1,8 @@
 import { Trash } from 'phosphor-react'
+import { useContext } from 'react'
 import { ItemCounterButton } from '../../../../components/ItemCounterButton'
+import { CartContext } from '../../../../contexts/CartContext'
+import { convertPriceToText } from '../../../../helpers/formatPrice'
 import { Subtitle } from '../Subtitle'
 import {
   CheckoutContainer,
@@ -12,69 +15,60 @@ import {
 } from './styles'
 
 export function CartSummary() {
+  const { cartItems, totalPrice } = useContext(CartContext)
+
+  const deliveryPrice = 5.5
+
+  const totalPriceWithDeliveryPrice = totalPrice + deliveryPrice
+
   return (
     <CheckoutContainer>
       <Subtitle value={'Cafés selecionados'} />
 
       <div>
         <ItemsList>
-          <ListItem>
-            <img src={'americano.svg'} alt="" />
-            <div>
-              <p>Expresso tradicional</p>
-              <footer>
-                <ItemCounterButton
-                  itemQuantity={1}
-                  onDecreaseItemQuantity={() => {}}
-                  onIncreaseItemQuantity={() => {}}
-                />
-                <DeleteButton>
-                  <Trash size={16} />
-                  Remover
-                </DeleteButton>
-              </footer>
-            </div>
-            <strong>R$ 9,90</strong>
-          </ListItem>
+          {cartItems.map((item) => (
+            <>
+              <ListItem>
+                <img src={item.imageUrl} alt="" />
+                <div>
+                  <p>{item.title}</p>
+                  <footer>
+                    <ItemCounterButton
+                      itemQuantity={item.quantity}
+                      onDecreaseItemQuantity={() => {}}
+                      onIncreaseItemQuantity={() => {}}
+                    />
+                    <DeleteButton>
+                      <Trash size={16} />
+                      Remover
+                    </DeleteButton>
+                  </footer>
+                </div>
+                <strong>R$ {convertPriceToText(item.price)}</strong>
+              </ListItem>
 
-          <ListItemDivider />
-
-          <ListItem>
-            <img src={'americano.svg'} alt="" />
-            <div>
-              <p>Expresso tradicional</p>
-              <footer>
-                <ItemCounterButton
-                  itemQuantity={1}
-                  onDecreaseItemQuantity={() => {}}
-                  onIncreaseItemQuantity={() => {}}
-                />
-                <DeleteButton>
-                  <Trash size={16} />
-                  Remover
-                </DeleteButton>
-              </footer>
-            </div>
-            <strong>R$ 9,90</strong>
-          </ListItem>
-
-          <ListItemDivider />
+              <ListItemDivider />
+            </>
+          ))}
         </ItemsList>
 
         <PricesContainer>
           <div>
             <span>Total de itens</span>
-            <strong>R$ 29,70</strong>
+            <strong>R$ {convertPriceToText(totalPrice)}</strong>
           </div>
 
           <div>
             <span>Entrega</span>
-            <strong>R$ 3,50</strong>
+            <strong>R$ {convertPriceToText(deliveryPrice)}</strong>
           </div>
 
           <div>
             <span>Total</span>
-            <strong>R$ 33,20</strong>
+            <strong>
+              R$ {convertPriceToText(totalPriceWithDeliveryPrice)}
+            </strong>
           </div>
         </PricesContainer>
 
