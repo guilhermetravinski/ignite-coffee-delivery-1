@@ -20,6 +20,7 @@ export function CartSummary() {
     totalPrice,
     removeItemFromCart,
     decreaseCartItemQuantity,
+    increaseCartItemQuantity,
   } = useContext(CartContext)
 
   const deliveryPrice = 5.5
@@ -48,7 +49,9 @@ export function CartSummary() {
                       onDecreaseItemQuantity={() =>
                         decreaseCartItemQuantity(item.id)
                       }
-                      onIncreaseItemQuantity={() => {}}
+                      onIncreaseItemQuantity={() =>
+                        increaseCartItemQuantity(item.id)
+                      }
                     />
                     <DeleteButton onClick={() => handleRemoveCartItem(item.id)}>
                       <Trash size={16} />

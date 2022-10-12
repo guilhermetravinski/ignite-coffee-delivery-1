@@ -94,6 +94,29 @@ export function cartReducer(state: Cart, action: any) {
         draft.totalPrice = newCartTotalPrice
       })
     }
+    case ActionTypes.INCREASE_ITEM_QUANTITY: {
+      const itemIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === action.payload.cartItemId,
+      )
+
+      if (itemIndex < 0) {
+        return state
+      }
+
+      const itemCurrentQuantity = state.cartItems[itemIndex].quantity
+
+      const itemPrice = state.cartItems[itemIndex].price
+
+      const newQuantity = itemCurrentQuantity + 1
+      const newItemTotalPrice = itemPrice * newQuantity
+      const newCartTotalPrice = state.totalPrice + itemPrice
+
+      return produce(state, (draft) => {
+        draft.cartItems[itemIndex].quantity = newQuantity
+        draft.cartItems[itemIndex].totalPrice = newItemTotalPrice
+        draft.totalPrice = newCartTotalPrice
+      })
+    }
     default:
       return state
   }

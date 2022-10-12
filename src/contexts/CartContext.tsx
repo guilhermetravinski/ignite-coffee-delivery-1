@@ -3,6 +3,7 @@ import {
   addItemToCartAction,
   addItemToCartParams,
   decreaseItemQuantityAction,
+  increaseItemQuantityAction,
   removeItemFromCartAction,
 } from '../reducers/cart/actions'
 import { CartItem, cartReducer } from '../reducers/cart/reducer'
@@ -13,6 +14,7 @@ type CartContextData = {
   addItemToCart: (cartItem: addItemToCartParams) => void
   removeItemFromCart: (cartItemId: string) => void
   decreaseCartItemQuantity: (cartItemId: string) => void
+  increaseCartItemQuantity: (cartItemId: string) => void
 }
 
 export const CartContext = createContext({} as CartContextData)
@@ -41,6 +43,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(decreaseItemQuantityAction(cartItemId))
   }
 
+  function increaseCartItemQuantity(cartItemId: string) {
+    dispatch(increaseItemQuantityAction(cartItemId))
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -49,6 +55,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         addItemToCart,
         removeItemFromCart,
         decreaseCartItemQuantity,
+        increaseCartItemQuantity,
       }}
     >
       {children}
