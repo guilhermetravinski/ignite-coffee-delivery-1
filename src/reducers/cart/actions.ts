@@ -4,6 +4,7 @@ import { CartItem } from './reducer'
 export enum ActionTypes {
   ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART',
   REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART',
+  DECREASE_ITEM_QUANTITY = 'DECREASE_ITEM_QUANTITY',
 }
 
 export type addItemToCartParams = Omit<CartItem, 'totalPrice'>
@@ -20,6 +21,15 @@ export function addItemToCartAction(cartItem: addItemToCartParams) {
 export function removeItemFromCartAction(cartItemId: string) {
   return {
     type: ActionTypes.REMOVE_ITEM_FROM_CART,
+    payload: {
+      cartItemId,
+    },
+  }
+}
+
+export function decreaseItemQuantityAction(cartItemId: string) {
+  return {
+    type: ActionTypes.DECREASE_ITEM_QUANTITY,
     payload: {
       cartItemId,
     },

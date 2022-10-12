@@ -15,12 +15,6 @@ type Cart = {
   totalPrice: number
 }
 
-// function calculateCartTotalPrice(cartItems: CartItem[]): number {
-//   return cartItems.reduce((accumulator, currentCartItem) => {
-//     return accumulator + currentCartItem.totalPrice
-//   }, 0)
-// }
-
 export function cartReducer(state: Cart, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_ITEM_TO_CART: {
@@ -71,6 +65,33 @@ export function cartReducer(state: Cart, action: any) {
         )
 
         draft.totalPrice = newTotalPrice
+      })
+    }
+    case ActionTypes.DECREASE_ITEM_QUANTITY: {
+      const itemIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === action.payload.cartItemId,
+      )
+
+      if (itemIndex < 0) {
+        return state
+      }
+
+      const itemCurrentQuantity = state.cartItems[itemIndex].quantity
+
+      if (itemCurrentQuantity <= 1) {
+        return state
+      }
+
+      const itemPrice = state.cartItems[itemIndex].price
+
+      const newQuantity = itemCurrentQuantity - 1
+      const newItemTotalPrice = itemPrice * newQuantity
+      const newCartTotalPrice = state.totalPrice - itemPrice
+
+      return produce(state, (draft) => {
+        draft.cartItems[itemIndex].quantity = newQuantity
+        draft.cartItems[itemIndex].totalPrice = newItemTotalPrice
+        draft.totalPrice = newCartTotalPrice
       })
     }
     default:

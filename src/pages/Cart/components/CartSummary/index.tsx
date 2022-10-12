@@ -15,7 +15,12 @@ import {
 } from './styles'
 
 export function CartSummary() {
-  const { cartItems, totalPrice, removeItemFromCart } = useContext(CartContext)
+  const {
+    cartItems,
+    totalPrice,
+    removeItemFromCart,
+    decreaseCartItemQuantity,
+  } = useContext(CartContext)
 
   const deliveryPrice = 5.5
 
@@ -40,7 +45,9 @@ export function CartSummary() {
                   <footer>
                     <ItemCounterButton
                       itemQuantity={item.quantity}
-                      onDecreaseItemQuantity={() => {}}
+                      onDecreaseItemQuantity={() =>
+                        decreaseCartItemQuantity(item.id)
+                      }
                       onIncreaseItemQuantity={() => {}}
                     />
                     <DeleteButton onClick={() => handleRemoveCartItem(item.id)}>
