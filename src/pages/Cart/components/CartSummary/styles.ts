@@ -145,4 +145,12 @@ export const CheckoutButton = styled.button`
   font-size: 0.875rem;
   line-height: 1.375rem;
   text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: ${(props) => props.theme['--brand-yellow-dark']};
+  }
 `
