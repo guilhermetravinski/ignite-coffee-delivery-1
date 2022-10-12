@@ -8,6 +8,7 @@ import {
   PricesContainer,
   CheckoutButton,
   DeleteButton,
+  ListItemDivider,
 } from './styles'
 
 export function CartSummary() {
@@ -36,6 +37,8 @@ export function CartSummary() {
             <strong>R$ 9,90</strong>
           </ListItem>
 
+          <ListItemDivider />
+
           <ListItem>
             <img src={'americano.svg'} alt="" />
             <div>
@@ -54,6 +57,8 @@ export function CartSummary() {
             </div>
             <strong>R$ 9,90</strong>
           </ListItem>
+
+          <ListItemDivider />
         </ItemsList>
 
         <PricesContainer>

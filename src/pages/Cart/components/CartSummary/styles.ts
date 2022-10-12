@@ -19,6 +19,9 @@ export const CheckoutContainer = styled.div`
 
 export const ItemsList = styled.ul`
   list-style: none;
+
+  margin-top: 1.5rem;
+
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -53,6 +56,10 @@ export const ListItem = styled.li`
     line-height: 1.3125rem;
     color: ${(props) => props.theme['--base-text']};
   }
+`
+
+export const ListItemDivider = styled.div`
+  border: 1px solid ${(props) => props.theme['--base-button']};
 `
 
 export const DeleteButton = styled.button`
