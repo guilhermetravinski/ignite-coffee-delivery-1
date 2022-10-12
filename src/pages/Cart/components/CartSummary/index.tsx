@@ -15,11 +15,15 @@ import {
 } from './styles'
 
 export function CartSummary() {
-  const { cartItems, totalPrice } = useContext(CartContext)
+  const { cartItems, totalPrice, removeItemFromCart } = useContext(CartContext)
 
   const deliveryPrice = 5.5
 
   const totalPriceWithDeliveryPrice = totalPrice + deliveryPrice
+
+  function handleRemoveCartItem(id: string) {
+    removeItemFromCart(id)
+  }
 
   return (
     <CheckoutContainer>
@@ -39,7 +43,7 @@ export function CartSummary() {
                       onDecreaseItemQuantity={() => {}}
                       onIncreaseItemQuantity={() => {}}
                     />
-                    <DeleteButton>
+                    <DeleteButton onClick={() => handleRemoveCartItem(item.id)}>
                       <Trash size={16} />
                       Remover
                     </DeleteButton>

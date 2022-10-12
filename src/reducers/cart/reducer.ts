@@ -51,6 +51,23 @@ export function cartReducer(state: Cart, action: any) {
         totalPrice,
       }
     }
+    case ActionTypes.REMOVE_ITEM_FROM_CART: {
+      const item = state.cartItems.find(
+        (cartItem) => cartItem.id === action.payload.cartItemId,
+      )
+
+      const cartItemListWithoutDeletedItem = [
+        ...state.cartItems.filter(
+          (cartItem) => cartItem.id !== action.payload.cartItemId,
+        ),
+      ]
+
+      return {
+        ...state,
+        cartItems: cartItemListWithoutDeletedItem,
+        totalPrice: state.totalPrice - item?.totalPrice!,
+      }
+    }
     default:
       return state
   }
