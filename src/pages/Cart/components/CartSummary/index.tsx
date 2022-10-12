@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import { useContext } from 'react'
+import { Fragment, useContext } from 'react'
 import { ItemCounterButton } from '../../../../components/ItemCounterButton'
 import { CartContext } from '../../../../contexts/CartContext'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
@@ -32,7 +32,7 @@ export function CartSummary() {
       <div>
         <ItemsList>
           {cartItems.map((item) => (
-            <>
+            <Fragment key={item.id}>
               <ListItem>
                 <img src={item.imageUrl} alt="" />
                 <div>
@@ -53,7 +53,7 @@ export function CartSummary() {
               </ListItem>
 
               <ListItemDivider />
-            </>
+            </Fragment>
           ))}
         </ItemsList>
 
