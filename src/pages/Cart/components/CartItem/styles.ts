@@ -10,6 +10,8 @@ export const CartItemContainer = styled.li`
   }
 
   > div {
+    flex: 1;
+
     > p {
       line-height: 1.3125rem;
       color: ${(props) => props.theme.colors['base-subtitle']};
@@ -24,7 +26,6 @@ export const CartItemContainer = styled.li`
 
   > strong {
     text-align: right;
-    flex: 1;
     font-weight: 700;
     line-height: 1.3125rem;
     color: ${(props) => props.theme.colors['base-text']};

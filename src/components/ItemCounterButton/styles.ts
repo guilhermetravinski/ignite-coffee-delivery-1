@@ -8,6 +8,8 @@ export const ItemCounterButtonContainer = styled.div`
 
   border-radius: 6px;
   padding: 0.5rem;
+  width: 4.5rem;
+  height: 2rem;
 
   background: ${(props) => props.theme.colors['base-button']};
 

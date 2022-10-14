@@ -36,9 +36,11 @@ export const DeleteButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  height: 2rem;
+  max-width: 5.6875rem;
 
   text-transform: uppercase;
   line-height: 1.1875rem;
