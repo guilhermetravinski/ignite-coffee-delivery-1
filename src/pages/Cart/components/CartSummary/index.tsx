@@ -1,8 +1,8 @@
 import { Trash } from 'phosphor-react'
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 import { ItemCounterButton } from '../../../../components/ItemCounterButton'
-import { CartContext } from '../../../../contexts/CartContext'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
+import { useCart } from '../../../../hooks/useCart'
 import { Subtitle } from '../Subtitle'
 import {
   CheckoutContainer,
@@ -25,7 +25,7 @@ export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
     removeItemFromCart,
     decreaseCartItemQuantity,
     increaseCartItemQuantity,
-  } = useContext(CartContext)
+  } = useCart()
 
   const deliveryPrice = 5.5
 

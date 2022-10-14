@@ -1,12 +1,11 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
-import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg'
-import { CartContext } from '../../contexts/CartContext'
+import { useCart } from '../../hooks/useCart'
 import { GoToCartButton, HeaderContainer, LocationContainer } from './styles'
 
 export function Header() {
-  const { cartItems } = useContext(CartContext)
+  const { cartItems } = useCart()
 
   return (
     <HeaderContainer>

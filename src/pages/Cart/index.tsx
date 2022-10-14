@@ -1,8 +1,8 @@
 import { MapPinLine } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
-import { CartContext } from '../../contexts/CartContext'
+import { useCart } from '../../hooks/useCart'
 import { PaymentMethodTypes } from '../../reducers/cart/reducer'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
@@ -38,7 +38,7 @@ export function Cart() {
   const [city, setCity] = useState('')
   const [district, setDistrict] = useState('')
 
-  const { setDeliveryAddressAndPaymentMethod } = useContext(CartContext)
+  const { setDeliveryAddressAndPaymentMethod } = useCart()
 
   const navigate = useNavigate()
 

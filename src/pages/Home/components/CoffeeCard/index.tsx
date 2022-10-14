@@ -1,8 +1,8 @@
 import { ShoppingCart } from 'phosphor-react'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { ItemCounterButton } from '../../../../components/ItemCounterButton'
-import { CartContext } from '../../../../contexts/CartContext'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
+import { useCart } from '../../../../hooks/useCart'
 import { Coffee } from '../CoffeeList'
 import { CardFooter, CoffeeCardContainer } from './styles'
 
@@ -13,7 +13,7 @@ type CoffeeCardProps = {
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const [itemQuantity, setItemQuantity] = useState(1)
 
-  const { addItemToCart } = useContext(CartContext)
+  const { addItemToCart } = useCart()
 
   function handleIncreaseItemQuantity() {
     setItemQuantity(itemQuantity + 1)

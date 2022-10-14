@@ -6,12 +6,11 @@ import {
 } from './styles'
 import orderCompleted from '../../assets/order-completed.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useContext } from 'react'
-import { CartContext } from '../../contexts/CartContext'
 import { getPaymentMethodName } from '../../helpers/getPaymentMethodName'
+import { useCart } from '../../hooks/useCart'
 
 export function OrderCompleted() {
-  const { deliveryAddress, paymentMethod } = useContext(CartContext)
+  const { deliveryAddress, paymentMethod } = useCart()
 
   return (
     <OrderCompletedContainer>
