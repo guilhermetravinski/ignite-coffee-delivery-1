@@ -8,9 +8,23 @@ import orderCompleted from '../../assets/order-completed.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { getPaymentMethodName } from '../../helpers/getPaymentMethodName'
 import { useCart } from '../../hooks/useCart'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function OrderCompleted() {
   const { deliveryAddress, paymentMethod } = useCart()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (
+      !deliveryAddress?.street ||
+      !deliveryAddress.zipcode ||
+      !deliveryAddress.city
+    ) {
+      navigate('/')
+    }
+  }, [deliveryAddress])
 
   return (
     <OrderCompletedContainer className="container">
