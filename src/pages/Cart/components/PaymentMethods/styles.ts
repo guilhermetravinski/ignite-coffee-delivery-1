@@ -46,7 +46,6 @@ export const PaymentOptionButton = styled.button<PaymentOptionButtonProps>`
       ? props.theme['--brand-purple-light']
       : props.theme['--base-button']};
 
-  cursor: pointer;
 
   transition: background-color 0.2s, color 0.2s;
 

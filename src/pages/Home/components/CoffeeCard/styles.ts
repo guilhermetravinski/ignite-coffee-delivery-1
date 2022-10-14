@@ -103,8 +103,6 @@ export const CardFooter = styled.footer`
       background: ${(props) => props.theme['--brand-purple-dark']};
       color: ${(props) => props.theme['--base-card']};
 
-      cursor: pointer;
-
       transition: background-color 0.2s;
 
       &:hover {

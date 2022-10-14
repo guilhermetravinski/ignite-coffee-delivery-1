@@ -17,8 +17,6 @@ export const ItemCounterButtonContainer = styled.div`
     border: none;
     background: none;
 
-    cursor: pointer;
-
     transition: background-color 0.5s;
 
     &:hover {

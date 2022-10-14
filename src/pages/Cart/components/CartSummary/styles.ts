@@ -80,8 +80,6 @@ export const DeleteButton = styled.button`
   background: ${(props) => props.theme['--base-button']};
   color: ${(props) => props.theme['--base-text']};
 
-  cursor: pointer;
-
   transition: background-color 0.2s, color 0.2s;
 
   &:hover {
@@ -145,8 +143,6 @@ export const CheckoutButton = styled.button`
   font-size: 0.875rem;
   line-height: 1.375rem;
   text-transform: uppercase;
-
-  cursor: pointer;
 
   transition: background-color 0.2s;
 
