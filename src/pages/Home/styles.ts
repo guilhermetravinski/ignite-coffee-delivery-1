@@ -1,12 +1,9 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
-  width: 100%;
-  margin: 0 auto 9.75rem;
+  margin-bottom: 9.75rem;
+  margin-top: 5.875rem;
   padding: 0 1rem;
-
-  position: relative;
-  top: 12.375rem;
 `
 
 export const IntroContainer = styled.div`

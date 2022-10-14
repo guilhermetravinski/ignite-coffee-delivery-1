@@ -1,12 +1,9 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.main`
-  width: 100%;
-  margin: 0 auto 9.75rem;
+  margin-bottom: 9.75rem;
+  margin-top: 2.5rem;
   padding: 0 1rem;
-
-  position: relative;
-  top: 9rem;
 
   display: flex;
   gap: 2rem;

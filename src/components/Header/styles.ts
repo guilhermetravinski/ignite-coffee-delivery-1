@@ -3,22 +3,29 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  max-width: 72rem;
+  height: 6.5rem;
 
-  background: ${(props) => props.theme.colors['base-background']};
+  background: ${({ theme }) => theme.colors['base-background']};
 
-  position: fixed;
-  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 2rem 1rem;
-  margin: 0 auto;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
+`
 
+export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  padding: 0 1rem;
+
   > a {
-    width: 84.95px;
+    width: 5.309375rem;
     height: 2.5rem;
   }
 

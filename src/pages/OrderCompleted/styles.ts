@@ -1,12 +1,9 @@
 import styled from 'styled-components'
 
 export const OrderCompletedContainer = styled.main`
-  width: 100%;
-  margin: 0 auto 9.75rem;
+  margin-top: 5rem;
+  margin-bottom: 9.75rem;
   padding: 0 1rem;
-
-  position: relative;
-  top: 11.5rem;
 
   display: flex;
   flex-direction: column;

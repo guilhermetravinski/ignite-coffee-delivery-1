@@ -10,7 +10,7 @@ import {
 
 export function Home() {
   return (
-    <HomeContainer>
+    <HomeContainer className="container">
       <IntroContainer>
         <IntroLeftContainer>
           <div>

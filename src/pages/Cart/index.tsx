@@ -97,7 +97,7 @@ export function Cart() {
   }
 
   return (
-    <CartContainer>
+    <CartContainer className="container">
       <FormContainer>
         <Subtitle value={'Complete seu pedido'} />
 

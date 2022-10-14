@@ -13,7 +13,7 @@ export function OrderCompleted() {
   const { deliveryAddress, paymentMethod } = useCart()
 
   return (
-    <OrderCompletedContainer>
+    <OrderCompletedContainer className="container">
       <TitlesContainer>
         <h1>Uhu! Pedido confirmado</h1>
         <p>Agora é só aguardar que logo o café chegará até você</p>
