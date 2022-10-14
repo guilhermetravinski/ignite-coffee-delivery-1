@@ -20,13 +20,13 @@ export const TitlesContainer = styled.div`
     line-height: 2.625rem;
     font-family: 'Baloo 2', cursive;
 
-    color: ${(props) => props.theme['--brand-yellow-dark']};
+    color: ${(props) => props.theme.colors['brand-yellow-dark']};
   }
 
   > p {
     font-size: 1.25rem;
     line-height: 1.625rem;
-    color: ${(props) => props.theme['--base-subtitle']};
+    color: ${(props) => props.theme.colors['base-subtitle']};
   }
 `
 
@@ -78,12 +78,12 @@ export const InfoContainer = styled.div<InfoContainerProps>`
 
     border-radius: 50%;
 
-    color: ${(props) => props.theme['--base-background']};
+    color: ${(props) => props.theme.colors['base-background']};
     background: ${(props) =>
-    props.theme[
+    props.theme.colors[
     props.isDarkIcon
-      ? `--brand-${props.variant}-dark`
-      : `--brand-${props.variant}`
+      ? `brand-${props.variant}-dark`
+      : `brand-${props.variant}`
     ]};
   }
 
@@ -91,13 +91,13 @@ export const InfoContainer = styled.div<InfoContainerProps>`
     > p {
       font-weight: 400;
       line-height: 1.3125rem;
-      color: ${(props) => props.theme['--base-text']};
+      color: ${(props) => props.theme.colors['base-text']};
     }
 
     strong {
       font-weight: 700;
       line-height: 1.3125rem;
-      color: ${(props) => props.theme['--base-text']};
+      color: ${(props) => props.theme.colors['base-text']};
     }
   }
 `

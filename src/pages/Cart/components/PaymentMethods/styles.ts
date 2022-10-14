@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const PaymentMethodsContainer = styled.div`
   margin-top: 0.75rem;
 
-  background-color: ${(props) => props.theme['--base-card']};
+  background-color: ${(props) => props.theme.colors['base-card']};
   border-radius: 6px;
   padding: 2.5rem;
 
@@ -37,25 +37,25 @@ export const PaymentOptionButton = styled.button<PaymentOptionButtonProps>`
 
   border: 1px solid
     ${(props) =>
-    props.isActive ? props.theme['--brand-purple'] : 'transparent'};
+    props.isActive ? props.theme.colors['brand-purple'] : 'transparent'};
   border-radius: 6px;
 
-  color: ${(props) => props.theme['--base-text']};
+  color: ${(props) => props.theme.colors['base-text']};
   background: ${(props) =>
     props.isActive
-      ? props.theme['--brand-purple-light']
-      : props.theme['--base-button']};
+      ? props.theme.colors['brand-purple-light']
+      : props.theme.colors['base-button']};
 
 
   transition: background-color 0.2s, color 0.2s;
 
   &:hover {
-    color: ${(props) => props.theme['--base-subtitle']};
-    background: ${(props) => props.theme['--base-hover']};
+    color: ${(props) => props.theme.colors['base-subtitle']};
+    background: ${(props) => props.theme.colors['base-hover']};
   }
 
   > svg {
-    color: ${(props) => props.theme['--brand-purple']};
+    color: ${(props) => props.theme.colors['brand-purple']};
   }
 `
 

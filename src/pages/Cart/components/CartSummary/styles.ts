@@ -8,7 +8,7 @@ export const CheckoutContainer = styled.div`
     margin-top: 0.9375rem;
     padding: 2.5rem;
 
-    background: ${(props) => props.theme['--base-card']};
+    background: ${(props) => props.theme.colors['base-card']};
     border-radius: 6px 44px;
 
     display: flex;
@@ -39,7 +39,7 @@ export const ListItem = styled.li`
   > div {
     > p {
       line-height: 1.3125rem;
-      color: ${(props) => props.theme['--base-subtitle']};
+      color: ${(props) => props.theme.colors['base-subtitle']};
       margin-bottom: 0.5rem;
     }
 
@@ -54,12 +54,12 @@ export const ListItem = styled.li`
     flex: 1;
     font-weight: 700;
     line-height: 1.3125rem;
-    color: ${(props) => props.theme['--base-text']};
+    color: ${(props) => props.theme.colors['base-text']};
   }
 `
 
 export const ListItemDivider = styled.div`
-  border: 1px solid ${(props) => props.theme['--base-button']};
+  border: 1px solid ${(props) => props.theme.colors['base-button']};
 `
 
 export const DeleteButton = styled.button`
@@ -77,18 +77,18 @@ export const DeleteButton = styled.button`
   border-radius: 6px;
   border: none;
 
-  background: ${(props) => props.theme['--base-button']};
-  color: ${(props) => props.theme['--base-text']};
+  background: ${(props) => props.theme.colors['base-button']};
+  color: ${(props) => props.theme.colors['base-text']};
 
   transition: background-color 0.2s, color 0.2s;
 
   &:hover {
-    background: ${(props) => props.theme['--base-hover']};
-    color: ${(props) => props.theme['--base-subtitle']};
+    background: ${(props) => props.theme.colors['base-hover']};
+    color: ${(props) => props.theme.colors['base-subtitle']};
   }
 
   > svg {
-    color: ${(props) => props.theme['--brand-purple']};
+    color: ${(props) => props.theme.colors['brand-purple']};
   }
 `
 
@@ -102,13 +102,13 @@ export const PricesContainer = styled.div`
     justify-content: space-between;
 
     > span {
-      color: ${(props) => props.theme['--base-text']};
+      color: ${(props) => props.theme.colors['base-text']};
       font-size: 0.875rem;
       line-height: 1.125rem;
     }
 
     > strong {
-      color: ${(props) => props.theme['--base-text']};
+      color: ${(props) => props.theme.colors['base-text']};
       line-height: 1.3125rem;
       font-weight: 400;
     }
@@ -118,7 +118,7 @@ export const PricesContainer = styled.div`
       strong {
         font-size: 1.25rem;
         line-height: 1.625rem;
-        color: ${(props) => props.theme['--base-subtitle']};
+        color: ${(props) => props.theme.colors['base-subtitle']};
         font-weight: 700;
       }
     }
@@ -136,8 +136,8 @@ export const CheckoutButton = styled.button`
   border-radius: 6px;
   border: none;
 
-  background: ${(props) => props.theme['--brand-yellow']};
-  color: ${(props) => props.theme['--white']};
+  background: ${(props) => props.theme.colors['brand-yellow']};
+  color: ${(props) => props.theme.colors.white};
 
   font-weight: 700;
   font-size: 0.875rem;
@@ -147,6 +147,6 @@ export const CheckoutButton = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background: ${(props) => props.theme['--brand-yellow-dark']};
+    background: ${(props) => props.theme.colors['brand-yellow-dark']};
   }
 `

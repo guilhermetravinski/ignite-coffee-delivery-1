@@ -9,10 +9,10 @@ export const ItemCounterButtonContainer = styled.div`
   border-radius: 6px;
   padding: 0.5rem;
 
-  background: ${(props) => props.theme['--base-button']};
+  background: ${(props) => props.theme.colors['base-button']};
 
   > button {
-    color: ${(props) => props.theme['--brand-purple']};
+    color: ${(props) => props.theme.colors['brand-purple']};
     font-weight: bold;
     border: none;
     background: none;
@@ -20,12 +20,12 @@ export const ItemCounterButtonContainer = styled.div`
     transition: background-color 0.5s;
 
     &:hover {
-      color: ${(props) => props.theme['--brand-purple-dark']};
+      color: ${(props) => props.theme.colors['brand-purple-dark']};
     }
   }
 
   > p {
-    color: ${(props) => props.theme['--base-title']};
+    color: ${(props) => props.theme.colors['base-title']};
     line-height: 1.3125rem;
   }
 `

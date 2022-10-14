@@ -12,8 +12,8 @@ export const CardHeaderContainer = styled.div<CardHeaderContainerProps>`
   > svg {
     color: ${(props) =>
     props.isDefaultColor
-      ? props.theme['--brand-yellow-dark']
-      : props.theme['--brand-purple']};
+      ? props.theme.colors['brand-yellow-dark']
+      : props.theme.colors['brand-purple']};
   }
 
   > div {
@@ -21,7 +21,7 @@ export const CardHeaderContainer = styled.div<CardHeaderContainerProps>`
       line-height: 1.3125rem;
       font-weight: 400;
 
-      color: ${(props) => props.theme['--base-subtitle']};
+      color: ${(props) => props.theme.colors['base-subtitle']};
     }
 
     > p {
@@ -29,7 +29,7 @@ export const CardHeaderContainer = styled.div<CardHeaderContainerProps>`
       line-height: 1.125rem;
       font-weight: 400;
 
-      color: ${(props) => props.theme['--base-text']};
+      color: ${(props) => props.theme.colors['base-text']};
     }
   }
 `

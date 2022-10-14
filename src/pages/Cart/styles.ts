@@ -22,7 +22,7 @@ export const FormContainer = styled.div`
   > form {
     margin-top: 0.9375rem;
 
-    background-color: ${(props) => props.theme['--base-card']};
+    background-color: ${(props) => props.theme.colors['base-card']};
     border-radius: 6px;
     padding: 2.5rem;
   }
@@ -43,19 +43,19 @@ export const InputsContainer = styled.div`
 
 const BaseInput = styled.input`
   padding: 0.75rem;
-  background: ${(props) => props.theme['--base-input']};
-  color: ${(props) => props.theme['--base-text']};
-  border: 1px solid ${(props) => props.theme['--base-button']};
+  background: ${(props) => props.theme.colors['base-input']};
+  color: ${(props) => props.theme.colors['base-text']};
+  border: 1px solid ${(props) => props.theme.colors['base-button']};
   border-radius: 4px;
 
   transition: border-color 0.2s;
 
   :focus {
-    border: 1px solid ${(props) => props.theme['--brand-yellow-dark']};
+    border: 1px solid ${(props) => props.theme.colors['brand-yellow-dark']};
   }
 
   ::placeholder {
-    color: ${(props) => props.theme['--base-label']};
+    color: ${(props) => props.theme.colors['base-label']};
   }
 `
 

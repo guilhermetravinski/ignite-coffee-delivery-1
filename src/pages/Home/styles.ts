@@ -35,14 +35,14 @@ export const IntroLeftContainer = styled.div`
       font-weight: 800;
       font-size: 3rem;
       line-height: 3.875rem;
-      color: ${(props) => props.theme['--base-title']};
+      color: ${(props) => props.theme.colors['base-title']};
       font-family: 'Baloo 2', cursive;
     }
 
     > p {
       margin-top: 1rem;
       font-size: 1.25rem;
-      color: ${(props) => props.theme['--base-subtitle']};
+      color: ${(props) => props.theme.colors['base-subtitle']};
     }
   }
 
@@ -66,10 +66,10 @@ type IntroLeftListItemProps = {
 }
 
 const IconBgByIconType = {
-  cart: '--brand-yellow-dark',
-  package: '--base-text',
-  timer: '--brand-yellow',
-  coffee: '--brand-purple',
+  cart: 'brand-yellow-dark',
+  package: 'base-text',
+  timer: 'brand-yellow',
+  coffee: 'brand-purple',
 }
 
 export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
@@ -85,7 +85,7 @@ export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
   svg {
     padding: 0.5rem;
     border-radius: 9999px;
-    color: ${(props) => props.theme['--base-background']};
-    background: ${(props) => props.theme[IconBgByIconType[props.iconType]]};
+    color: ${(props) => props.theme.colors['base-background']};
+    background: ${(props) => props.theme.colors[IconBgByIconType[props.iconType]]};
   }
 `

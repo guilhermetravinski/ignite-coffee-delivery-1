@@ -6,7 +6,7 @@ export const CoffeeCardContainer = styled.li`
   justify-content: flex-start;
   align-items: center;
 
-  background: ${(props) => props.theme['--base-card']};
+  background: ${(props) => props.theme.colors['base-card']};
   border-radius: 6px 36px;
 
   padding: 0 0 1.25rem;
@@ -28,8 +28,8 @@ export const CoffeeCardContainer = styled.li`
 
       border-radius: 100px;
 
-      background: ${(props) => props.theme['--brand-yellow-light']};
-      color: ${(props) => props.theme['--brand-yellow-dark']};
+      background: ${(props) => props.theme.colors['brand-yellow-light']};
+      color: ${(props) => props.theme.colors['brand-yellow-dark']};
 
       text-transform: uppercase;
       font-weight: 700;
@@ -41,7 +41,7 @@ export const CoffeeCardContainer = styled.li`
   > strong {
     margin-top: 1rem;
 
-    color: ${(props) => props.theme['--base-subtitle']};
+    color: ${(props) => props.theme.colors['base-subtitle']};
 
     font-weight: 700;
     font-family: 'Baloo 2', cursive;
@@ -57,7 +57,7 @@ export const CoffeeCardContainer = styled.li`
     line-height: 1.125rem;
     text-align: center;
 
-    color: ${(props) => props.theme['--base-label']};
+    color: ${(props) => props.theme.colors['base-label']};
   }
 `
 
@@ -72,7 +72,7 @@ export const CardFooter = styled.footer`
     font-weight: 800;
     font-size: 1.5rem;
     line-height: 1.9375rem;
-    color: ${(props) => props.theme['--base-text']};
+    color: ${(props) => props.theme.colors['base-text']};
 
     &::before {
       content: 'R$ ';
@@ -100,13 +100,13 @@ export const CardFooter = styled.footer`
       border: none;
       border-radius: 6px;
 
-      background: ${(props) => props.theme['--brand-purple-dark']};
-      color: ${(props) => props.theme['--base-card']};
+      background: ${(props) => props.theme.colors['brand-purple-dark']};
+      color: ${(props) => props.theme.colors['base-card']};
 
       transition: background-color 0.2s;
 
       &:hover {
-        background: ${(props) => props.theme['--brand-purple']};
+        background: ${(props) => props.theme.colors['brand-purple']};
       }
     }
   }
