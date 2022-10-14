@@ -7,7 +7,6 @@ export function convertPriceToText(price: number): string {
 
   priceText = priceText.replace('.', ',')
 
-  // eslint-disable-next-line no-unused-vars
   const [_, afterCommaValue] = priceText.split(',')
 
   if (afterCommaValue.length === 1) {
