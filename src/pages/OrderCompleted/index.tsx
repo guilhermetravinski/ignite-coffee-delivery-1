@@ -6,8 +6,13 @@ import {
 } from './styles'
 import orderCompleted from '../../assets/order-completed.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
+import { getPaymentMethodName } from '../../helpers/getPaymentMethodName'
 
 export function OrderCompleted() {
+  const { deliveryAddress, paymentMethod } = useContext(CartContext)
+
   return (
     <OrderCompletedContainer>
       <TitlesContainer>
@@ -21,9 +26,15 @@ export function OrderCompleted() {
             <MapPin size={32} weight="fill" />
             <div>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {deliveryAddress?.street}, {deliveryAddress?.number}
+                </strong>
               </p>
-              <p>Farropos - Porto Alegre, RS</p>
+              <p>
+                {deliveryAddress?.neighborhood} - {deliveryAddress?.city},{' '}
+                {deliveryAddress?.district}
+              </p>
             </div>
           </InfoContainer>
 
@@ -39,7 +50,7 @@ export function OrderCompleted() {
             <CurrencyDollar size={32} weight="fill" />
             <div>
               <p>Pagamento na entrega</p>
-              <strong>Cartão de crédito</strong>
+              <strong>{getPaymentMethodName(paymentMethod!)}</strong>
             </div>
           </InfoContainer>
         </div>

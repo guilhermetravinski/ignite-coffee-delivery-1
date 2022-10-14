@@ -16,7 +16,7 @@ import {
 type CartContextData = {
   cartItems: CartItem[]
   totalPrice: number
-  paymentMethod?: 'credit-card' | 'debit-card' | 'money'
+  paymentMethod?: 'credit-card' | 'debit-card' | 'money' | null
   deliveryAddress?: DeliveryAddress
   addItemToCart: (cartItem: addItemToCartParams) => void
   removeItemFromCart: (cartItemId: string) => void
@@ -50,7 +50,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     paymentMethod: null,
   })
 
-  const { cartItems, totalPrice } = cartState
+  const { cartItems, totalPrice, paymentMethod, deliveryAddress } = cartState
 
   function addItemToCart(cartItem: addItemToCartParams) {
     dispatch(addItemToCartAction(cartItem))
@@ -82,6 +82,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       value={{
         cartItems,
         totalPrice,
+        paymentMethod,
+        deliveryAddress,
         addItemToCart,
         removeItemFromCart,
         decreaseCartItemQuantity,
