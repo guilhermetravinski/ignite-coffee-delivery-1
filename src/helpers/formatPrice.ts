@@ -1,5 +1,5 @@
 export function convertPriceToText(price: number): string {
-  let priceText = String(price)
+  let priceText = String(price.toFixed(2))
 
   if (!priceText.includes('.')) {
     return priceText.concat(',00')
