@@ -8,6 +8,10 @@ export const OrderCompletedContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+
+  @media (max-width: 720px) {
+    margin-top: 2rem;
+  }
 `
 
 export const TitlesContainer = styled.div`
@@ -50,6 +54,12 @@ export const SectionContainer = styled.section`
   > img {
     height: 18.3125rem;
     width: 30.75rem;
+  }
+
+  @media (max-width: 720px) {
+    > img {
+      display: none;
+    }
   }
 `
 

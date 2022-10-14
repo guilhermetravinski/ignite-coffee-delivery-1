@@ -7,6 +7,11 @@ export const CartContainer = styled.main`
 
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
 `
 
 export const FormContainer = styled.div`
@@ -35,5 +40,17 @@ export const InputsContainer = styled.div`
   > div {
     display: flex;
     gap: 0.75rem;
+  }
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+
+    > div {
+      flex-direction: column;
+    }
+
+    input {
+      width: 100%;
+    }
   }
 `

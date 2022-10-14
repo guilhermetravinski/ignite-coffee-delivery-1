@@ -1,4 +1,5 @@
 import { Trash } from 'phosphor-react'
+import { Fragment } from 'react'
 import { ItemCounterButton } from '../../../../components/ItemCounterButton'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
 import { useCart } from '../../../../hooks/useCart'
@@ -18,7 +19,7 @@ export function CartItem({ item }: CartItemProps) {
   } = useCart()
 
   return (
-    <div>
+    <Fragment>
       <CartItemContainer>
         <img src={item.imageUrl} alt="" />
         <div>
@@ -39,6 +40,6 @@ export function CartItem({ item }: CartItemProps) {
       </CartItemContainer>
 
       <CartItemDivider />
-    </div>
+    </Fragment>
   )
 }

@@ -19,6 +19,10 @@ export const PaymentMethodsContainer = styled.div`
     > li {
       width: 100%;
     }
+
+    @media (max-width: 720px) {
+      flex-direction: column;
+    }
   }
 `
 

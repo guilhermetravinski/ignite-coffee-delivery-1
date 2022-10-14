@@ -30,6 +30,19 @@ export const CartItemContainer = styled.li`
     line-height: 1.3125rem;
     color: ${(props) => props.theme.colors['base-text']};
   }
+
+  @media (max-width: 720px) {
+    gap: 0.5rem;
+
+    > img {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    > strong {
+      font-size: 0.75rem;
+    }
+  }
 `
 
 export const CartItemDivider = styled.div`
