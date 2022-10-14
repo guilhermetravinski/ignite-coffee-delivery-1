@@ -7,6 +7,7 @@ export enum ActionTypes {
   DECREASE_ITEM_QUANTITY = 'DECREASE_ITEM_QUANTITY',
   INCREASE_ITEM_QUANTITY = 'INCREASE_ITEM_QUANTITY',
   SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD = 'SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD',
+  CLEAR_CART_ITEMS_AND_TOTAL_PRICE = 'CLEAR_CART_ITEMS_AND_TOTAL_PRICE',
 }
 
 export type addItemToCartParams = Omit<CartItem, 'totalPrice'>
@@ -57,5 +58,11 @@ export function setDeliveryAddressAndPaymentMethodAction(
       deliveryAddress,
       paymentMethod,
     },
+  }
+}
+
+export function clearCartItemsAndTotalPriceAction() {
+  return {
+    type: ActionTypes.CLEAR_CART_ITEMS_AND_TOTAL_PRICE,
   }
 }

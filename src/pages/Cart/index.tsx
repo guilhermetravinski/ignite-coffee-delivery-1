@@ -38,7 +38,8 @@ export function Cart() {
   const [city, setCity] = useState('')
   const [district, setDistrict] = useState('')
 
-  const { setDeliveryAddressAndPaymentMethod } = useCart()
+  const { setDeliveryAddressAndPaymentMethod, clearCartItemsAndTotalPrice } =
+    useCart()
 
   const navigate = useNavigate()
 
@@ -91,8 +92,9 @@ export function Cart() {
       },
       paymentMethod as any,
     )
-    resetForm()
 
+    resetForm()
+    clearCartItemsAndTotalPrice()
     navigate('/order-completed')
   }
 

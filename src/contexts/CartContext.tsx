@@ -2,6 +2,7 @@ import { createContext, ReactNode, useReducer } from 'react'
 import {
   addItemToCartAction,
   addItemToCartParams,
+  clearCartItemsAndTotalPriceAction,
   decreaseItemQuantityAction,
   increaseItemQuantityAction,
   removeItemFromCartAction,
@@ -27,6 +28,7 @@ type CartContextData = {
     deliveryAddress: DeliveryAddress,
     paymentMethod: PaymentMethodTypes,
   ) => void
+  clearCartItemsAndTotalPrice: () => void
 }
 
 export const CartContext = createContext({} as CartContextData)
@@ -69,6 +71,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(increaseItemQuantityAction(cartItemId))
   }
 
+  function clearCartItemsAndTotalPrice() {
+    dispatch(clearCartItemsAndTotalPriceAction())
+  }
+
   function setDeliveryAddressAndPaymentMethod(
     deliveryAddress: DeliveryAddress,
     paymentMethod: PaymentMethodTypes,
@@ -90,6 +96,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         decreaseCartItemQuantity,
         increaseCartItemQuantity,
         setDeliveryAddressAndPaymentMethod,
+        clearCartItemsAndTotalPrice,
       }}
     >
       {children}

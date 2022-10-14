@@ -141,6 +141,12 @@ export function cartReducer(state: Cart, action: any) {
         draft.deliveryAddress = { ...action.payload.deliveryAddress }
       })
     }
+    case ActionTypes.CLEAR_CART_ITEMS_AND_TOTAL_PRICE: {
+      return produce(state, (draft) => {
+        draft.cartItems = []
+        draft.totalPrice = 0
+      })
+    }
     default:
       return state
   }
