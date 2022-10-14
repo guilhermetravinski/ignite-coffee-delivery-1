@@ -10,9 +10,21 @@ export type CartItem = {
   imageUrl: string
 }
 
+export type DeliveryAddress = {
+  zipcode: string
+  number: number
+  street: string
+  district: string
+  city: string
+  neighborhood: string
+  complement?: string
+}
+
 type Cart = {
   cartItems: CartItem[]
   totalPrice: number
+  paymentMethod: 'credit-card' | 'debit-card' | 'money' | null
+  deliveryAddress: DeliveryAddress
 }
 
 export function cartReducer(state: Cart, action: any) {
@@ -115,6 +127,12 @@ export function cartReducer(state: Cart, action: any) {
         draft.cartItems[itemIndex].quantity = newQuantity
         draft.cartItems[itemIndex].totalPrice = newItemTotalPrice
         draft.totalPrice = newCartTotalPrice
+      })
+    }
+    case ActionTypes.SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD: {
+      return produce(state, (draft) => {
+        draft.paymentMethod = action.payload.paymentMethod
+        draft.deliveryAddress = { ...action.payload.deliveryAddress }
       })
     }
     default:

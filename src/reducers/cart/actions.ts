@@ -1,4 +1,4 @@
-import { CartItem } from './reducer'
+import { CartItem, DeliveryAddress } from './reducer'
 
 /* eslint-disable no-unused-vars */
 export enum ActionTypes {
@@ -6,6 +6,7 @@ export enum ActionTypes {
   REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART',
   DECREASE_ITEM_QUANTITY = 'DECREASE_ITEM_QUANTITY',
   INCREASE_ITEM_QUANTITY = 'INCREASE_ITEM_QUANTITY',
+  SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD = 'SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD',
 }
 
 export type addItemToCartParams = Omit<CartItem, 'totalPrice'>
@@ -42,6 +43,19 @@ export function increaseItemQuantityAction(cartItemId: string) {
     type: ActionTypes.INCREASE_ITEM_QUANTITY,
     payload: {
       cartItemId,
+    },
+  }
+}
+
+export function setDeliveryAddressAndPaymentMethodAction(
+  deliveryAddress: DeliveryAddress,
+  paymentMethod: 'credit-card' | 'debit-card' | 'money',
+) {
+  return {
+    type: ActionTypes.SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD,
+    payload: {
+      deliveryAddress,
+      paymentMethod,
     },
   }
 }

@@ -1,6 +1,8 @@
 import { MapPinLine } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
+import { CartContext } from '../../contexts/CartContext'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
@@ -34,6 +36,10 @@ export function Cart() {
   const [neighborhood, setNeighborhood] = useState('')
   const [city, setCity] = useState('')
   const [district, setDistrict] = useState('')
+
+  const { setDeliveryAddressAndPaymentMethod } = useContext(CartContext)
+
+  const navigate = useNavigate()
 
   function handleSelectPaymentMethod(chosenPaymentMethod: string) {
     if (paymentMethod === chosenPaymentMethod) {
@@ -72,7 +78,21 @@ export function Cart() {
       return
     }
 
+    setDeliveryAddressAndPaymentMethod(
+      {
+        zipcode,
+        street,
+        number: Number(number),
+        complement,
+        neighborhood,
+        city,
+        district,
+      },
+      paymentMethod as any,
+    )
     resetForm()
+
+    navigate('/order-completed')
   }
 
   return (

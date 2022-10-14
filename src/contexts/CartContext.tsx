@@ -5,16 +5,27 @@ import {
   decreaseItemQuantityAction,
   increaseItemQuantityAction,
   removeItemFromCartAction,
+  setDeliveryAddressAndPaymentMethodAction,
 } from '../reducers/cart/actions'
-import { CartItem, cartReducer } from '../reducers/cart/reducer'
+import {
+  CartItem,
+  cartReducer,
+  DeliveryAddress,
+} from '../reducers/cart/reducer'
 
 type CartContextData = {
   cartItems: CartItem[]
   totalPrice: number
+  paymentMethod?: 'credit-card' | 'debit-card' | 'money'
+  deliveryAddress?: DeliveryAddress
   addItemToCart: (cartItem: addItemToCartParams) => void
   removeItemFromCart: (cartItemId: string) => void
   decreaseCartItemQuantity: (cartItemId: string) => void
   increaseCartItemQuantity: (cartItemId: string) => void
+  setDeliveryAddressAndPaymentMethod: (
+    deliveryAddress: DeliveryAddress,
+    paymentMethod: 'credit-card' | 'debit-card' | 'money',
+  ) => void
 }
 
 export const CartContext = createContext({} as CartContextData)
@@ -27,6 +38,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartState, dispatch] = useReducer(cartReducer, {
     cartItems: [],
     totalPrice: 0,
+    deliveryAddress: {
+      zipcode: '',
+      number: '' as any,
+      street: '',
+      district: '',
+      city: '',
+      neighborhood: '',
+      complement: '',
+    },
+    paymentMethod: null,
   })
 
   const { cartItems, totalPrice } = cartState
@@ -47,6 +68,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(increaseItemQuantityAction(cartItemId))
   }
 
+  function setDeliveryAddressAndPaymentMethod(
+    deliveryAddress: DeliveryAddress,
+    paymentMethod: 'credit-card' | 'debit-card' | 'money',
+  ) {
+    dispatch(
+      setDeliveryAddressAndPaymentMethodAction(deliveryAddress, paymentMethod),
+    )
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -56,6 +86,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         removeItemFromCart,
         decreaseCartItemQuantity,
         increaseCartItemQuantity,
+        setDeliveryAddressAndPaymentMethod,
       }}
     >
       {children}
