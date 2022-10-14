@@ -57,18 +57,7 @@ export const IntroLeftContainer = styled.div`
   }
 `
 
-type IntroLeftListItemProps = {
-  iconType: 'cart' | 'package' | 'timer' | 'coffee'
-}
-
-const IconBgByIconType = {
-  cart: 'brand-yellow-dark',
-  package: 'base-text',
-  timer: 'brand-yellow',
-  coffee: 'brand-purple',
-}
-
-export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
+export const IntroLeftListItem = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -76,13 +65,5 @@ export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
 
   p {
     line-height: 21px;
-  }
-
-  svg {
-    padding: 0.5rem;
-    border-radius: 9999px;
-    color: ${(props) => props.theme.colors['base-background']};
-    background: ${(props) =>
-    props.theme.colors[IconBgByIconType[props.iconType]]};
   }
 `

@@ -1,5 +1,7 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useTheme } from 'styled-components'
 import coffeeDeliveryHome from '../../assets/coffee-delivery-home.svg'
+import { RoundedIcon } from '../../components/RoundedIcon'
 import { CoffeeList } from './components/CoffeeList'
 import {
   HomeContainer,
@@ -9,6 +11,8 @@ import {
 } from './styles'
 
 export function Home() {
+  const { colors } = useTheme()
+
   return (
     <HomeContainer className="container">
       <IntroContainer>
@@ -21,20 +25,32 @@ export function Home() {
             </p>
           </div>
           <ul>
-            <IntroLeftListItem iconType="cart">
-              <ShoppingCart size={32} weight="fill" />
+            <IntroLeftListItem>
+              <RoundedIcon
+                bgColor={colors['brand-yellow-dark']}
+                icon={<ShoppingCart weight="fill" />}
+              />
               <p>Compra simples e segura</p>
             </IntroLeftListItem>
-            <IntroLeftListItem iconType="package">
-              <Package size={32} weight="fill" />
+            <IntroLeftListItem>
+              <RoundedIcon
+                bgColor={colors['base-text']}
+                icon={<Package weight="fill" />}
+              />
               <p>Embalagem mantém o café intacto</p>
             </IntroLeftListItem>
-            <IntroLeftListItem iconType="timer">
-              <Timer size={32} weight="fill" />
+            <IntroLeftListItem>
+              <RoundedIcon
+                bgColor={colors['brand-yellow']}
+                icon={<Timer weight="fill" />}
+              />
               <p>Entrega rápida e rastreada</p>
             </IntroLeftListItem>
-            <IntroLeftListItem iconType="coffee">
-              <Coffee size={32} weight="fill" />
+            <IntroLeftListItem>
+              <RoundedIcon
+                bgColor={colors['brand-purple']}
+                icon={<Coffee weight="fill" />}
+              />
               <p>O café chega fresquinho até você</p>
             </IntroLeftListItem>
           </ul>

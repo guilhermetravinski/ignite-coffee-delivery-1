@@ -10,11 +10,13 @@ import { getPaymentMethodName } from '../../helpers/getPaymentMethodName'
 import { useCart } from '../../hooks/useCart'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { RoundedIcon } from '../../components/RoundedIcon'
+import { useTheme } from 'styled-components'
 
 export function OrderCompleted() {
   const { deliveryAddress, paymentMethod } = useCart()
-
   const navigate = useNavigate()
+  const { colors } = useTheme()
 
   useEffect(() => {
     if (
@@ -36,7 +38,10 @@ export function OrderCompleted() {
       <SectionContainer>
         <div>
           <InfoContainer variant="purple">
-            <MapPin size={32} weight="fill" />
+            <RoundedIcon
+              icon={<MapPin weight="fill" />}
+              bgColor={colors['brand-purple']}
+            />
             <div>
               <p>
                 Entrega em{' '}
@@ -52,7 +57,10 @@ export function OrderCompleted() {
           </InfoContainer>
 
           <InfoContainer variant="yellow">
-            <Timer size={32} weight="fill" />
+            <RoundedIcon
+              icon={<Timer weight="fill" />}
+              bgColor={colors['brand-yellow']}
+            />
             <div>
               <p>Previsão de entrega</p>
               <strong>20 min - 30 min</strong>
@@ -60,7 +68,10 @@ export function OrderCompleted() {
           </InfoContainer>
 
           <InfoContainer isDarkIcon={true} variant="yellow">
-            <CurrencyDollar size={32} weight="fill" />
+            <RoundedIcon
+              icon={<CurrencyDollar weight="fill" />}
+              bgColor={colors['brand-yellow-dark']}
+            />
             <div>
               <p>Pagamento na entrega</p>
               <strong>{getPaymentMethodName(paymentMethod!)}</strong>
