@@ -3,6 +3,7 @@ import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
 import { CartContext } from '../../contexts/CartContext'
+import { PaymentMethodTypes } from '../../reducers/cart/reducer'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
@@ -24,7 +25,7 @@ const deliveryAddressFormValidationSchema = zod.object({
   neighborhood: zod.string().min(1, 'Digite um bairro válido'),
   city: zod.string().min(1, 'Digite uma cidade válida'),
   district: zod.string().min(2).max(2, 'O UF precisa ter 2 digitos'),
-  paymentMethod: zod.enum(['credit-card', 'debit-card', 'money']),
+  paymentMethod: zod.nativeEnum(PaymentMethodTypes),
 })
 
 export function Cart() {

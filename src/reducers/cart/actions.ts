@@ -1,4 +1,4 @@
-import { CartItem, DeliveryAddress } from './reducer'
+import { CartItem, DeliveryAddress, PaymentMethodTypes } from './reducer'
 
 /* eslint-disable no-unused-vars */
 export enum ActionTypes {
@@ -49,7 +49,7 @@ export function increaseItemQuantityAction(cartItemId: string) {
 
 export function setDeliveryAddressAndPaymentMethodAction(
   deliveryAddress: DeliveryAddress,
-  paymentMethod: 'credit-card' | 'debit-card' | 'money',
+  paymentMethod: PaymentMethodTypes,
 ) {
   return {
     type: ActionTypes.SET_DELIVERY_ADDRESS_AND_PAYMENT_METHOD,

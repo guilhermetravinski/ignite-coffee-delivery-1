@@ -1,4 +1,5 @@
 import { CurrencyDollar, CreditCard, Bank, Money } from 'phosphor-react'
+import { PaymentMethodTypes } from '../../../../reducers/cart/reducer'
 import { CardHeader } from '../CardHeader'
 import { PaymentMethodsContainer, PaymentOptionButton } from './styles'
 
@@ -9,25 +10,25 @@ type PaymentMethodsProps = {
 
 const availablePaymentMethods = [
   {
-    name: 'credit-card',
+    name: PaymentMethodTypes.CREDIT_CARD,
     title: 'Cartão de crédito',
   },
   {
-    name: 'debit-card',
+    name: PaymentMethodTypes.DEBIT_CARD,
     title: 'Cartão de débito',
   },
   {
-    name: 'money',
+    name: PaymentMethodTypes.MONEY,
     title: 'Dinheiro',
   },
 ]
 
 function returnIconByPaymentMethod(method: string) {
-  if (method === 'money') {
+  if (method === PaymentMethodTypes.MONEY) {
     return <Money />
   }
 
-  if (method === 'debit-card') {
+  if (method === PaymentMethodTypes.DEBIT_CARD) {
     return <Bank />
   }
 

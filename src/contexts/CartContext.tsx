@@ -11,12 +11,13 @@ import {
   CartItem,
   cartReducer,
   DeliveryAddress,
+  PaymentMethodTypes,
 } from '../reducers/cart/reducer'
 
 type CartContextData = {
   cartItems: CartItem[]
   totalPrice: number
-  paymentMethod?: 'credit-card' | 'debit-card' | 'money' | null
+  paymentMethod?: PaymentMethodTypes
   deliveryAddress?: DeliveryAddress
   addItemToCart: (cartItem: addItemToCartParams) => void
   removeItemFromCart: (cartItemId: string) => void
@@ -24,7 +25,7 @@ type CartContextData = {
   increaseCartItemQuantity: (cartItemId: string) => void
   setDeliveryAddressAndPaymentMethod: (
     deliveryAddress: DeliveryAddress,
-    paymentMethod: 'credit-card' | 'debit-card' | 'money',
+    paymentMethod: PaymentMethodTypes,
   ) => void
 }
 
@@ -47,7 +48,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       neighborhood: '',
       complement: '',
     },
-    paymentMethod: null,
+    paymentMethod: null as any,
   })
 
   const { cartItems, totalPrice, paymentMethod, deliveryAddress } = cartState
@@ -70,7 +71,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   function setDeliveryAddressAndPaymentMethod(
     deliveryAddress: DeliveryAddress,
-    paymentMethod: 'credit-card' | 'debit-card' | 'money',
+    paymentMethod: PaymentMethodTypes,
   ) {
     dispatch(
       setDeliveryAddressAndPaymentMethodAction(deliveryAddress, paymentMethod),

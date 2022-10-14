@@ -20,10 +20,16 @@ export type DeliveryAddress = {
   complement?: string
 }
 
+export enum PaymentMethodTypes {
+  CREDIT_CARD = 'credit-card',
+  DEBIT_CARD = 'debit-card',
+  MONEY = 'money',
+}
+
 type Cart = {
   cartItems: CartItem[]
   totalPrice: number
-  paymentMethod: 'credit-card' | 'debit-card' | 'money' | null
+  paymentMethod: PaymentMethodTypes
   deliveryAddress: DeliveryAddress
 }
 

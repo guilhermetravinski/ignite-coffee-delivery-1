@@ -1,15 +1,15 @@
-export function getPaymentMethodName(
-  paymentMethod: 'credit-card' | 'debit-card' | 'money',
-) {
-  if (paymentMethod === 'credit-card') {
+import { PaymentMethodTypes } from '../reducers/cart/reducer'
+
+export function getPaymentMethodName(paymentMethod: PaymentMethodTypes) {
+  if (paymentMethod === PaymentMethodTypes.CREDIT_CARD) {
     return 'Cartão de crédito'
   }
 
-  if (paymentMethod === 'debit-card') {
+  if (paymentMethod === PaymentMethodTypes.DEBIT_CARD) {
     return 'Cartão de Débito'
   }
 
-  if (paymentMethod === 'money') {
+  if (paymentMethod === PaymentMethodTypes.MONEY) {
     return 'Dinheiro'
   }
 }
