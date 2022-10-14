@@ -49,7 +49,12 @@ export const PaymentOptionButton = styled.button<PaymentOptionButtonProps>`
 
   transition: background-color 0.2s, color 0.2s;
 
-  &:hover {
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
     color: ${(props) => props.theme.colors['base-subtitle']};
     background: ${(props) => props.theme.colors['base-hover']};
   }
