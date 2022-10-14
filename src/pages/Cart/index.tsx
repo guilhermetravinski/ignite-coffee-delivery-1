@@ -2,20 +2,14 @@ import { MapPinLine } from 'phosphor-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
+import { Input } from '../../components/Input'
 import { useCart } from '../../hooks/useCart'
 import { PaymentMethodTypes } from '../../reducers/cart/reducer'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
 import { Subtitle } from './components/Subtitle'
-import {
-  CartContainer,
-  DefaultInput,
-  FormContainer,
-  FullsizeInput,
-  InputsContainer,
-  SmallInput,
-} from './styles'
+import { CartContainer, FormContainer, InputsContainer } from './styles'
 
 const deliveryAddressFormValidationSchema = zod.object({
   zipcode: zod.string().min(8).max(8, 'Digite um CEP válido'),
@@ -107,26 +101,30 @@ export function Cart() {
           />
 
           <InputsContainer>
-            <DefaultInput
+            <Input
+              inputSize="regular"
               type="text"
               value={zipcode}
               placeholder="CEP"
               onChange={(e) => setZipcode(e.target.value)}
             />
-            <FullsizeInput
+            <Input
+              inputSize="large"
               type="text"
               value={street}
               placeholder="Rua"
               onChange={(e) => setStreet(e.target.value)}
             />
             <div>
-              <DefaultInput
+              <Input
+                inputSize="regular"
                 type="text"
                 value={number}
                 placeholder="Número"
                 onChange={(e) => setNumber(e.target.value)}
               />
-              <FullsizeInput
+              <Input
+                inputSize="large"
                 type="text"
                 value={complement}
                 onChange={(e) => setComplement(e.target.value)}
@@ -134,19 +132,22 @@ export function Cart() {
               />
             </div>
             <div>
-              <DefaultInput
+              <Input
+                inputSize="regular"
                 type="text"
                 value={neighborhood}
                 onChange={(e) => setNeighborhood(e.target.value)}
                 placeholder="Bairro"
               />
-              <FullsizeInput
+              <Input
+                inputSize="large"
                 type="text"
                 value={city}
                 placeholder="Cidade"
                 onChange={(e) => setCity(e.target.value)}
               />
-              <SmallInput
+              <Input
+                inputSize="small"
                 type="text"
                 value={district}
                 placeholder="UF"

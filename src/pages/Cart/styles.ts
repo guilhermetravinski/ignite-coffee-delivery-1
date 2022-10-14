@@ -37,33 +37,3 @@ export const InputsContainer = styled.div`
     gap: 0.75rem;
   }
 `
-
-const BaseInput = styled.input`
-  padding: 0.75rem;
-  background: ${(props) => props.theme.colors['base-input']};
-  color: ${(props) => props.theme.colors['base-text']};
-  border: 1px solid ${(props) => props.theme.colors['base-button']};
-  border-radius: 4px;
-
-  transition: border-color 0.2s;
-
-  :focus {
-    border: 1px solid ${(props) => props.theme.colors['brand-yellow-dark']};
-  }
-
-  ::placeholder {
-    color: ${(props) => props.theme.colors['base-label']};
-  }
-`
-
-export const DefaultInput = styled(BaseInput)`
-  max-width: 12.5rem;
-`
-
-export const FullsizeInput = styled(BaseInput)`
-  width: 100%;
-`
-
-export const SmallInput = styled(BaseInput)`
-  max-width: 3.75rem;
-`
