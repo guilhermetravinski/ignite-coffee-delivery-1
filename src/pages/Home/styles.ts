@@ -36,7 +36,6 @@ export const IntroLeftContainer = styled.div`
       font-size: 3rem;
       line-height: 3.875rem;
       color: ${(props) => props.theme.colors['base-title']};
-      font-family: 'Baloo 2', cursive;
     }
 
     > p {
@@ -86,6 +85,7 @@ export const IntroLeftListItem = styled.li<IntroLeftListItemProps>`
     padding: 0.5rem;
     border-radius: 9999px;
     color: ${(props) => props.theme.colors['base-background']};
-    background: ${(props) => props.theme.colors[IconBgByIconType[props.iconType]]};
+    background: ${(props) =>
+    props.theme.colors[IconBgByIconType[props.iconType]]};
   }
 `

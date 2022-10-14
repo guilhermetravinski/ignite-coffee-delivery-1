@@ -18,7 +18,6 @@ export const TitlesContainer = styled.div`
     font-size: 2rem;
     font-weight: 800;
     line-height: 2.625rem;
-    font-family: 'Baloo 2', cursive;
 
     color: ${(props) => props.theme.colors['brand-yellow-dark']};
   }

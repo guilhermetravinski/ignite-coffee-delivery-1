@@ -76,7 +76,7 @@ export const CardFooter = styled.footer`
 
     &::before {
       content: 'R$ ';
-      font-family: 'Roboto', sans-serif;
+      font-family: ${(props) => props.theme.fonts.regular}, sans-serif;
       font-weight: 400;
       font-size: 0.875rem;
       line-height: 1.125rem;

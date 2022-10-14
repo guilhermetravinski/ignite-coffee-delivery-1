@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button {
       font-weight: 400;
       font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
+      font-family: ${(props) => props.theme.fonts.regular}, sans-serif;
     }
 
     button {
@@ -25,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       text-decoration: none;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: ${(props) => props.theme.fonts.title}, cursive;
     }
 
 `

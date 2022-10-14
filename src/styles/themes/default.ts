@@ -21,4 +21,9 @@ export const defaultTheme = {
     'base-background': '#FAFAFA',
     white: '#FFFFFF',
   },
+
+  fonts: {
+    regular: "'Roboto'",
+    title: "'Baloo 2'",
+  },
 }

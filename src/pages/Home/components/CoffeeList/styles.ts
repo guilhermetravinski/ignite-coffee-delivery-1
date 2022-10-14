@@ -4,7 +4,6 @@ export const CoffeeListContainer = styled.div`
   margin-top: 6.75rem;
 
   > h2 {
-    font-family: 'Baloo 2', cursive;
     font-weight: 800;
     font-size: 2rem;
     line-height: 2.625rem;
