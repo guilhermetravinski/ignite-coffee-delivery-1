@@ -90,7 +90,10 @@ export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
           </div>
         </PricesContainer>
 
-        <CheckoutButton onClick={onAddDeliveryAddress}>
+        <CheckoutButton
+          onClick={onAddDeliveryAddress}
+          disabled={cartItems.length <= 0}
+        >
           Confirmar Pedido
         </CheckoutButton>
       </div>
