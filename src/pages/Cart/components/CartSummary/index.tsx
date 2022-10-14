@@ -1,17 +1,12 @@
-import { Trash } from 'phosphor-react'
-import { Fragment } from 'react'
-import { ItemCounterButton } from '../../../../components/ItemCounterButton'
 import { convertPriceToText } from '../../../../helpers/formatPrice'
 import { useCart } from '../../../../hooks/useCart'
+import { CartItem } from '../CartItem'
 import { Subtitle } from '../Subtitle'
 import {
   CheckoutContainer,
   ItemsList,
-  ListItem,
   PricesContainer,
   CheckoutButton,
-  DeleteButton,
-  ListItemDivider,
 } from './styles'
 
 type CartSummaryProps = {
@@ -19,21 +14,11 @@ type CartSummaryProps = {
 }
 
 export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
-  const {
-    cartItems,
-    totalPrice,
-    removeItemFromCart,
-    decreaseCartItemQuantity,
-    increaseCartItemQuantity,
-  } = useCart()
+  const { cartItems, totalPrice } = useCart()
 
   const deliveryPrice = 5.5
 
   const totalPriceWithDeliveryPrice = totalPrice + deliveryPrice
-
-  function handleRemoveCartItem(id: string) {
-    removeItemFromCart(id)
-  }
 
   return (
     <CheckoutContainer>
@@ -42,32 +27,7 @@ export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
       <div>
         <ItemsList>
           {cartItems.map((item) => (
-            <Fragment key={item.id}>
-              <ListItem>
-                <img src={item.imageUrl} alt="" />
-                <div>
-                  <p>{item.title}</p>
-                  <footer>
-                    <ItemCounterButton
-                      itemQuantity={item.quantity}
-                      onDecreaseItemQuantity={() =>
-                        decreaseCartItemQuantity(item.id)
-                      }
-                      onIncreaseItemQuantity={() =>
-                        increaseCartItemQuantity(item.id)
-                      }
-                    />
-                    <DeleteButton onClick={() => handleRemoveCartItem(item.id)}>
-                      <Trash size={16} />
-                      Remover
-                    </DeleteButton>
-                  </footer>
-                </div>
-                <strong>R$ {convertPriceToText(item.price)}</strong>
-              </ListItem>
-
-              <ListItemDivider />
-            </Fragment>
+            <CartItem item={item} key={item.id} />
           ))}
         </ItemsList>
 

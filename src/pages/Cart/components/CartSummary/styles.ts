@@ -20,46 +20,9 @@ export const CheckoutContainer = styled.div`
 export const ItemsList = styled.ul`
   list-style: none;
 
-  margin-top: 1.5rem;
-
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`
-
-export const ListItem = styled.li`
-  display: flex;
-  gap: 1.25rem;
-
-  > img {
-    height: 4rem;
-    width: 4rem;
-  }
-
-  > div {
-    > p {
-      line-height: 1.3125rem;
-      color: ${(props) => props.theme.colors['base-subtitle']};
-      margin-bottom: 0.5rem;
-    }
-
-    > footer {
-      display: flex;
-      gap: 0.5rem;
-    }
-  }
-
-  > strong {
-    text-align: right;
-    flex: 1;
-    font-weight: 700;
-    line-height: 1.3125rem;
-    color: ${(props) => props.theme.colors['base-text']};
-  }
-`
-
-export const ListItemDivider = styled.div`
-  border: 1px solid ${(props) => props.theme.colors['base-button']};
 `
 
 export const DeleteButton = styled.button`
