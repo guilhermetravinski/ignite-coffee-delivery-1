@@ -107,6 +107,7 @@ export function Cart() {
               value={zipcode}
               placeholder="CEP"
               onChange={(e) => setZipcode(e.target.value)}
+              maxLength={8}
             />
             <Input
               inputSize="large"
@@ -152,6 +153,7 @@ export function Cart() {
                 value={district}
                 placeholder="UF"
                 onChange={(e) => setDistrict(e.target.value)}
+                maxLength={2}
               />
             </div>
           </InputsContainer>
