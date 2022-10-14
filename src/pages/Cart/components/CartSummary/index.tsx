@@ -25,11 +25,15 @@ export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
       <Subtitle value={'Cafés selecionados'} />
 
       <div>
-        <ItemsList>
-          {cartItems.map((item) => (
-            <CartItem item={item} key={item.id} />
-          ))}
-        </ItemsList>
+        {cartItems.length === 0 ? (
+          <span>Você não possui nenhum café no carrinho</span>
+        ) : (
+          <ItemsList>
+            {cartItems.map((item) => (
+              <CartItem item={item} key={item.id} />
+            ))}
+          </ItemsList>
+        )}
 
         <PricesContainer>
           <div>

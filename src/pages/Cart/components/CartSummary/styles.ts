@@ -14,6 +14,13 @@ export const CheckoutContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    > span {
+      text-align: center;
+      font-size: 1rem;
+      color: ${(props) => props.theme.colors['base-label']};
+      margin-bottom: 1.5rem;
+    }
   }
 `
 
