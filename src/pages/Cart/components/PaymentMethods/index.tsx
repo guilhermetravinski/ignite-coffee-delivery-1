@@ -5,7 +5,7 @@ import { PaymentMethodsContainer, PaymentOptionButton } from './styles'
 
 type PaymentMethodsProps = {
   paymentMethod: string
-  onSelectPaymentMethod: (paymentMethod: string) => void
+  onSelectPaymentMethod: (paymentMethod: PaymentMethodTypes) => void
 }
 
 const availablePaymentMethods = [

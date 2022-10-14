@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 const deliveryAddressFormValidationSchema = zod.object({
-  zipcode: zod.string().regex(/[0-9]{5}-[0-9]{3}/, 'Digite um CEP Válido'),
+  zipcode: zod.string().min(8).max(8, 'Digite um CEP válido'),
   street: zod.string().min(5, 'Digite um nome de rua válido'),
   number: zod.number().min(1, 'Digite um número da propriedade válido'),
   complement: zod.string().optional(),
@@ -29,7 +29,9 @@ const deliveryAddressFormValidationSchema = zod.object({
 })
 
 export function Cart() {
-  const [paymentMethod, setPaymentMethod] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodTypes>(
+    null as any,
+  )
   const [zipcode, setZipcode] = useState('')
   const [street, setStreet] = useState('')
   const [number, setNumber] = useState('')
@@ -43,9 +45,9 @@ export function Cart() {
 
   const navigate = useNavigate()
 
-  function handleSelectPaymentMethod(chosenPaymentMethod: string) {
+  function handleSelectPaymentMethod(chosenPaymentMethod: PaymentMethodTypes) {
     if (paymentMethod === chosenPaymentMethod) {
-      setPaymentMethod('')
+      setPaymentMethod(null as any)
       return
     }
 
@@ -53,7 +55,7 @@ export function Cart() {
   }
 
   function resetForm() {
-    setPaymentMethod('')
+    setPaymentMethod(null as any)
     setZipcode('')
     setStreet('')
     setNumber('' as any)
@@ -64,15 +66,20 @@ export function Cart() {
   }
 
   function handleAddDeliveryAddress() {
+    const deliveryAddressData = {
+      zipcode,
+      street,
+      number: Number(number),
+      complement,
+      neighborhood,
+      city,
+      district,
+      paymentMethod,
+    }
+
     try {
       deliveryAddressFormValidationSchema.parse({
-        zipcode,
-        street,
-        number: Number(number),
-        complement,
-        neighborhood,
-        city,
-        district,
+        ...deliveryAddressData,
         paymentMethod,
       })
     } catch (err) {
@@ -80,18 +87,7 @@ export function Cart() {
       return
     }
 
-    setDeliveryAddressAndPaymentMethod(
-      {
-        zipcode,
-        street,
-        number: Number(number),
-        complement,
-        neighborhood,
-        city,
-        district,
-      },
-      paymentMethod as any,
-    )
+    setDeliveryAddressAndPaymentMethod(deliveryAddressData, paymentMethod)
 
     resetForm()
     clearCartItemsAndTotalPrice()
