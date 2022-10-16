@@ -42,6 +42,7 @@ export function DeliveryAddressForm() {
           type="text"
           placeholder="Complemento"
           error={errors.complement?.message}
+          isOptional
           {...register('complement')}
         />
       </div>

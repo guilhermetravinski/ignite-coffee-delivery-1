@@ -1,21 +1,20 @@
 /* eslint-disable react/display-name */
 import { forwardRef, InputHTMLAttributes } from 'react'
-import { InputContainer } from './styles'
+import { InputContainer, InputStyled, RightText } from './styles'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   inputSize: 'small' | 'regular' | 'large'
   error?: string
+  isOptional?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputSize, error, ...rest }, ref) => {
+  ({ inputSize, error, isOptional, ...rest }, ref) => {
     return (
-      <InputContainer
-        ref={ref}
-        inputSize={inputSize}
-        hasError={!!error}
-        {...rest}
-      />
+      <InputContainer inputSize={inputSize} hasError={!!error}>
+        <InputStyled ref={ref} {...rest} />
+        {isOptional && <RightText>{'Opcional'}</RightText>}
+      </InputContainer>
     )
   },
 )
