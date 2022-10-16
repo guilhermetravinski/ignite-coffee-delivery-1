@@ -12,28 +12,19 @@ const availablePaymentMethods = [
   {
     name: PaymentMethodTypes.CREDIT_CARD,
     title: 'Cartão de crédito',
+    icon: <CreditCard />,
   },
   {
     name: PaymentMethodTypes.DEBIT_CARD,
     title: 'Cartão de débito',
+    icon: <Bank />,
   },
   {
     name: PaymentMethodTypes.MONEY,
     title: 'Dinheiro',
+    icon: <Money />,
   },
 ]
-
-function returnIconByPaymentMethod(method: string) {
-  if (method === PaymentMethodTypes.MONEY) {
-    return <Money />
-  }
-
-  if (method === PaymentMethodTypes.DEBIT_CARD) {
-    return <Bank />
-  }
-
-  return <CreditCard />
-}
 
 export function PaymentMethods({
   paymentMethod,
@@ -55,7 +46,7 @@ export function PaymentMethods({
               onClick={() => onSelectPaymentMethod(method.name)}
               isActive={paymentMethod === method.name}
             >
-              {returnIconByPaymentMethod(method.name)}
+              {method.icon}
               {method.title}
             </PaymentOptionButton>
           </li>
