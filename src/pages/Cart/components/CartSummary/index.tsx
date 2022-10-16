@@ -9,11 +9,7 @@ import {
   CheckoutButton,
 } from './styles'
 
-type CartSummaryProps = {
-  onAddDeliveryAddress: () => void
-}
-
-export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
+export function CartSummary() {
   const { cartItems, totalPrice } = useCart()
 
   const deliveryPrice = 5.5
@@ -55,7 +51,8 @@ export function CartSummary({ onAddDeliveryAddress }: CartSummaryProps) {
         </PricesContainer>
 
         <CheckoutButton
-          onClick={onAddDeliveryAddress}
+          type="submit"
+          form="delivery-address-form"
           disabled={cartItems.length <= 0}
         >
           Confirmar Pedido

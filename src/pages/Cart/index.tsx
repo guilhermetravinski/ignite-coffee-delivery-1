@@ -1,15 +1,16 @@
 import { MapPinLine } from 'phosphor-react'
-import { useState } from 'react'
+import { useForm, FormProvider } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
-import { Input } from '../../components/Input'
 import { useCart } from '../../hooks/useCart'
 import { PaymentMethodTypes } from '../../reducers/cart/reducer'
 import { CardHeader } from './components/CardHeader'
 import { CartSummary } from './components/CartSummary'
 import { PaymentMethods } from './components/PaymentMethods'
 import { Subtitle } from './components/Subtitle'
-import { CartContainer, FormContainer, InputsContainer } from './styles'
+import { CartContainer, FormContainer } from './styles'
+import { DeliveryAddressForm } from './components/DeliveryAddressForm'
 
 const deliveryAddressFormValidationSchema = zod.object({
   zipcode: zod.string().min(8).max(8, 'Digite um CEP válido'),
@@ -22,69 +23,46 @@ const deliveryAddressFormValidationSchema = zod.object({
   paymentMethod: zod.nativeEnum(PaymentMethodTypes),
 })
 
+export type DeliveryAddressFormData = zod.infer<
+  typeof deliveryAddressFormValidationSchema
+>
+
 export function Cart() {
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethodTypes>(
-    null as any,
-  )
-  const [zipcode, setZipcode] = useState('')
-  const [street, setStreet] = useState('')
-  const [number, setNumber] = useState('')
-  const [complement, setComplement] = useState('')
-  const [neighborhood, setNeighborhood] = useState('')
-  const [city, setCity] = useState('')
-  const [district, setDistrict] = useState('')
+  const deliveryAddressForm = useForm<DeliveryAddressFormData>({
+    resolver: zodResolver(deliveryAddressFormValidationSchema),
+    defaultValues: {
+      zipcode: '',
+      city: '',
+      complement: '',
+      district: '',
+      neighborhood: '',
+      number: '' as any,
+      paymentMethod: '' as any,
+    },
+  })
 
   const { setDeliveryAddressAndPaymentMethod, clearCartItemsAndTotalPrice } =
     useCart()
 
   const navigate = useNavigate()
 
+  const { handleSubmit, reset, setValue, watch } = deliveryAddressForm
+
+  const paymentMethod = watch('paymentMethod')
+
   function handleSelectPaymentMethod(chosenPaymentMethod: PaymentMethodTypes) {
     if (paymentMethod === chosenPaymentMethod) {
-      setPaymentMethod(null as any)
+      setValue('paymentMethod', '' as any)
       return
     }
 
-    setPaymentMethod(chosenPaymentMethod)
+    setValue('paymentMethod', chosenPaymentMethod, { shouldValidate: true })
   }
 
-  function resetForm() {
-    setPaymentMethod(null as any)
-    setZipcode('')
-    setStreet('')
-    setNumber('' as any)
-    setComplement('')
-    setNeighborhood('')
-    setCity('')
-    setDistrict('')
-  }
-
-  function handleAddDeliveryAddress() {
-    const deliveryAddressData = {
-      zipcode,
-      street,
-      number: Number(number),
-      complement,
-      neighborhood,
-      city,
-      district,
-      paymentMethod,
-    }
-
-    try {
-      deliveryAddressFormValidationSchema.parse({
-        ...deliveryAddressData,
-        paymentMethod,
-      })
-    } catch (err) {
-      console.error(err)
-      return
-    }
-
-    setDeliveryAddressAndPaymentMethod(deliveryAddressData, paymentMethod)
-
-    resetForm()
+  function handleAddDeliveryAddress(data: DeliveryAddressFormData) {
+    setDeliveryAddressAndPaymentMethod(data, data.paymentMethod)
     clearCartItemsAndTotalPrice()
+    reset()
     navigate('/order-completed')
   }
 
@@ -93,70 +71,21 @@ export function Cart() {
       <FormContainer>
         <Subtitle value={'Complete seu pedido'} />
 
-        <form>
-          <CardHeader
-            icon={<MapPinLine size={22} />}
-            title="Endereço de Entrega"
-            description="Informe o endereço onde deseja receber seu pedido"
-          />
+        <form
+          onSubmit={handleSubmit(handleAddDeliveryAddress, (e) =>
+            console.error(e),
+          )}
+          id="delivery-address-form"
+        >
+          <FormProvider {...deliveryAddressForm}>
+            <CardHeader
+              icon={<MapPinLine size={22} />}
+              title="Endereço de Entrega"
+              description="Informe o endereço onde deseja receber seu pedido"
+            />
 
-          <InputsContainer>
-            <Input
-              inputSize="regular"
-              type="text"
-              value={zipcode}
-              placeholder="CEP"
-              onChange={(e) => setZipcode(e.target.value)}
-              maxLength={8}
-            />
-            <Input
-              inputSize="large"
-              type="text"
-              value={street}
-              placeholder="Rua"
-              onChange={(e) => setStreet(e.target.value)}
-            />
-            <div>
-              <Input
-                inputSize="regular"
-                type="text"
-                value={number}
-                placeholder="Número"
-                onChange={(e) => setNumber(e.target.value)}
-              />
-              <Input
-                inputSize="large"
-                type="text"
-                value={complement}
-                onChange={(e) => setComplement(e.target.value)}
-                placeholder="Complemento"
-              />
-            </div>
-            <div>
-              <Input
-                inputSize="regular"
-                type="text"
-                value={neighborhood}
-                onChange={(e) => setNeighborhood(e.target.value)}
-                placeholder="Bairro"
-              />
-              <Input
-                inputSize="large"
-                type="text"
-                value={city}
-                placeholder="Cidade"
-                onChange={(e) => setCity(e.target.value)}
-              />
-              <Input
-                inputSize="small"
-                type="text"
-                value={district}
-                placeholder="UF"
-                onChange={(e) => setDistrict(e.target.value)}
-                maxLength={2}
-              />
-            </div>
-          </InputsContainer>
+            <DeliveryAddressForm />
+          </FormProvider>
         </form>
 
         <PaymentMethods
@@ -165,7 +94,7 @@ export function Cart() {
         />
       </FormContainer>
 
-      <CartSummary onAddDeliveryAddress={handleAddDeliveryAddress} />
+      <CartSummary />
     </CartContainer>
   )
 }
