@@ -4,10 +4,18 @@ import { InputContainer } from './styles'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   inputSize: 'small' | 'regular' | 'large'
+  error?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputSize, ...rest }, ref) => {
-    return <InputContainer ref={ref} inputSize={inputSize} {...rest} />
+  ({ inputSize, error, ...rest }, ref) => {
+    return (
+      <InputContainer
+        ref={ref}
+        inputSize={inputSize}
+        hasError={!!error}
+        {...rest}
+      />
+    )
   },
 )

@@ -72,9 +72,7 @@ export function Cart() {
         <Subtitle value={'Complete seu pedido'} />
 
         <form
-          onSubmit={handleSubmit(handleAddDeliveryAddress, (e) =>
-            console.error(e),
-          )}
+          onSubmit={handleSubmit(handleAddDeliveryAddress)}
           id="delivery-address-form"
         >
           <FormProvider {...deliveryAddressForm}>
